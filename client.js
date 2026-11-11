@@ -844,6 +844,7 @@ window.__ModuleLoader__.load({
 .dsu-btn:disabled{opacity:.6;cursor:default}
 .dsu-btn svg{width:14px;height:14px;flex:none}
 .dsu-card{background:var(--dsw-alias-bg-layer-1);border:1px solid var(--dsw-alias-border-l1);border-radius:12px;padding:16px}
+.dsu-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
 .dsu-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
 .dsu-h2{margin:0;font-size:14px;font-weight:600;line-height:1.4}
 .dsu-muted{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:1.5;margin:0}
@@ -884,6 +885,8 @@ window.__ModuleLoader__.load({
 .dsu-cost{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--dsw-alias-border-l1);border-radius:10px;padding:10px 12px;margin-bottom:14px;background:var(--dsw-alias-bg-base)}
 .dsu-cost-label{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--dsw-alias-label-secondary)}
 .dsu-cost-value{display:flex;align-items:baseline;gap:8px;font-size:20px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums}
+.dsu-cost-card .dsu-cost-value{font-size:28px;line-height:1.3;flex-wrap:wrap;overflow-wrap:anywhere}
+.dsu-cost-card .dsu-cost-value.dsu-muted{font-size:13px;font-weight:400}
 .dsu-cost-count{font-size:11px;font-weight:500;color:var(--dsw-alias-label-secondary)}
 .dsu-error{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--dsw-alias-state-error-primary);border-radius:10px;padding:10px 12px;font-size:13px}
 .dsu-error-text{min-width:0;word-break:break-word}
@@ -892,6 +895,7 @@ window.__ModuleLoader__.load({
 @keyframes dsu-spin{to{transform:rotate(360deg)}}
 @media (max-width:640px){
 .dsu-root{padding:16px}
+.dsu-summary-grid{grid-template-columns:minmax(0,1fr)}
 .dsu-row{grid-template-columns:minmax(0,1fr) 84px 84px}
 .dsu-col-updated{display:none}
 }
@@ -1435,7 +1439,7 @@ window.__ModuleLoader__.load({
         )
       }
 
-      function costStrip() {
+      function costSection() {
         const data = officialSpend.data
         const ready = data !== null && typeof data === 'object'
           && data.available === true && Array.isArray(data.totalCosts)
@@ -1456,8 +1460,9 @@ window.__ModuleLoader__.load({
             : h('div', { className: 'dsu-cost-value' },
               h('span', { className: 'dsu-spin', 'aria-hidden': true }),
               t('cost.loading'))
-        return h('div', { className: 'dsu-cost' },
-          h('div', { className: 'dsu-cost-label' }, t('cost.title')),
+        return h('section', { className: 'dsu-card dsu-cost-card' },
+          h('div', { className: 'dsu-section-head' },
+            h('h2', { className: 'dsu-h2' }, t('cost.title'))),
           value,
         )
       }
@@ -1510,7 +1515,6 @@ window.__ModuleLoader__.load({
             stat(t('tokens.total'), count(totals.totalTokens)),
           ),
           extra.length > 0 ? h('p', { className: 'dsu-muted', style: { marginTop: -6, marginBottom: 10 } }, extra.join(' · ')) : null,
-          costStrip(),
           rows.length === 0
             ? h('p', { className: 'dsu-empty' }, t('tokens.empty'))
             : h('div', { className: 'dsu-list', role: 'table', 'aria-label': t('tokens.title') },
@@ -1541,7 +1545,10 @@ window.__ModuleLoader__.load({
             ),
           ),
           state.error !== null ? errorBanner(state.error) : null,
-          accountSection(),
+          h('div', { className: 'dsu-summary-grid' },
+            accountSection(),
+            costSection(),
+          ),
           tokenSection(),
           h('div', { className: 'dsu-notes' },
             h('p', { className: 'dsu-note' }, t('tokens.note')),
