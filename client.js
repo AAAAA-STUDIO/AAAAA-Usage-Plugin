@@ -2697,7 +2697,7 @@ window.__ModuleLoader__.load({
 
     const shellLocales = {
       zh: {
-        'panel.title': 'AAAAA 用量',
+        'panel.title': '用量监控',
         'panel.subtitle': 'Codex / DeepSeek 双标签用量页，另含悬浮窗',
         'hud.label': '用量悬浮窗',
         'hud.enabled': '已开启',
