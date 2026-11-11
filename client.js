@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 34269)
-Total output lines: 2883
-
 window.__ModuleLoader__.load({
   id: 'AAAAA-Usage-Plugin',
   factory(require) {
@@ -602,7 +599,1618 @@ window.__ModuleLoader__.load({
       'tokens.truncated': '最新 {shown} / {total} セッションを表示しています。',
       'tokens.note': 'このデバイスのセッションログから集計した参考値です。請求記録ではありません。',
       'cost.title': '累計消費額（公式）',
-      …19269 tokens truncated…, { message: error, t, onRetry }))
+      'cost.loading': '公式データを読み込み中…',
+      'cost.failed': '公式累計消費額を取得できません',
+      'cost.empty': '公式累計消費額はありません',
+      'cost.signedOut': 'DSH で DeepSeek にサインインしてください。',
+      'cost.note': 'DeepSeek 公式アカウントの使用量データです。最大 5 分ほど遅れる場合があります。セッションごとの費用はローカル推定です。',
+      'column.session': 'セッション',
+      'column.tokens': 'トークン',
+      'column.context': 'コンテキスト',
+      'column.updated': '更新',
+      'badge.live': '実行中',
+      'badge.subagent': 'サブセッション',
+      'untitled': '無題のセッション',
+      'updated.at': '{time} に更新',
+    }
+
+    const es = {
+      'panel.label': 'Uso de DeepSeek',
+      'panel.title': 'Uso de DeepSeek',
+      'panel.subtitle': 'Saldo de la cuenta y consumo de tokens de las sesiones de este dispositivo.',
+      'action.refresh': 'Actualizar',
+      'action.usage': 'Detalle de uso',
+      'action.topUp': 'Recargar',
+      'state.loading': 'Cargando…',
+      'state.failed': 'No se pudieron cargar los datos de uso.',
+      'state.retry': 'Reintentar',
+      'account.title': 'Cuenta y saldo',
+      'account.signedOut': 'Sesión no iniciada',
+      'account.signedOutHint': 'Inicia sesión en Ajustes → Cuenta para ver tu saldo.',
+      'account.unavailable': 'Servicio de cuenta no disponible',
+      'account.unnamed': 'Cuenta de DeepSeek',
+      'balance.recharge': 'Saldo de recarga',
+      'balance.bonus': 'Bono',
+      'balance.total': 'Saldo total',
+      'balance.failed': 'Saldo no disponible',
+      'tokens.title': 'Uso de tokens',
+      'tokens.input': 'Entrada',
+      'tokens.cached': 'Entrada en caché',
+      'tokens.output': 'Salida',
+      'tokens.total': 'Total',
+      'tokens.empty': 'Aún no hay sesiones. Inicia una conversación para ver el uso de tokens.',
+      'tokens.truncated': 'Mostrando las últimas {shown} de {total} sesiones.',
+      'tokens.note': 'Calculado a partir de los registros de sesión de este dispositivo. Solo informativo, no es un registro de facturación.',
+      'cost.title': 'Gasto acumulado (oficial)',
+      'cost.loading': 'Leyendo el uso oficial…',
+      'cost.failed': 'El gasto acumulado oficial no está disponible',
+      'cost.empty': 'Aún no hay gasto acumulado oficial',
+      'cost.signedOut': 'Inicia sesión en DeepSeek desde DSH para leer el total oficial.',
+      'cost.note': 'Procede de los datos oficiales de uso de la cuenta DeepSeek y puede retrasarse hasta cinco minutos. Los costes por sesión siguen siendo estimaciones locales.',
+      'column.session': 'Sesión',
+      'column.tokens': 'Tokens',
+      'column.context': 'Contexto',
+      'column.updated': 'Actualizado',
+      'badge.live': 'En vivo',
+      'badge.subagent': 'Subsesión',
+      'untitled': 'Sesión sin título',
+      'updated.at': 'Actualizado a las {time}',
+    }
+
+    const fr = {
+      'panel.label': 'Usage DeepSeek',
+      'panel.title': 'Usage DeepSeek',
+      'panel.subtitle': "Solde du compte et consommation de tokens des sessions de cet appareil.",
+      'action.refresh': 'Actualiser',
+      'action.usage': "Détail de l'usage",
+      'action.topUp': 'Recharger',
+      'state.loading': 'Chargement…',
+      'state.failed': "Impossible de charger les données d'usage.",
+      'state.retry': 'Réessayer',
+      'account.title': 'Compte et solde',
+      'account.signedOut': 'Non connecté',
+      'account.signedOutHint': 'Connectez-vous dans Réglages → Compte pour voir votre solde.',
+      'account.unavailable': 'Service de compte indisponible',
+      'account.unnamed': 'Compte DeepSeek',
+      'balance.recharge': 'Solde de rechargement',
+      'balance.bonus': 'Bonus',
+      'balance.total': 'Solde total',
+      'balance.failed': 'Solde indisponible',
+      'tokens.title': 'Usage des tokens',
+      'tokens.input': 'Entrée',
+      'tokens.cached': 'Entrée en cache',
+      'tokens.output': 'Sortie',
+      'tokens.total': 'Total',
+      'tokens.empty': "Aucune session pour l'instant. Lancez une conversation pour voir l'usage des tokens.",
+      'tokens.truncated': 'Affichage des {shown} dernières sessions sur {total}.',
+      'tokens.note': "Calculé à partir des journaux de session de cet appareil. Informatif uniquement, pas un relevé de facturation.",
+      'cost.title': 'Dépense cumulée (officielle)',
+      'cost.loading': 'Lecture des données officielles…',
+      'cost.failed': 'Dépense cumulée officielle indisponible',
+      'cost.empty': 'Aucune dépense cumulée officielle pour le moment',
+      'cost.signedOut': 'Connectez-vous à DeepSeek dans DSH pour lire le total officiel.',
+      'cost.note': 'Données officielles d’utilisation du compte DeepSeek, avec jusqu’à cinq minutes de retard. Les coûts par session restent des estimations locales.',
+      'column.session': 'Session',
+      'column.tokens': 'Tokens',
+      'column.context': 'Contexte',
+      'column.updated': 'Mis à jour',
+      'badge.live': 'En direct',
+      'badge.subagent': 'Sous-session',
+      'untitled': 'Session sans titre',
+      'updated.at': 'Mis à jour à {time}',
+    }
+
+    const de = {
+      'panel.label': 'DeepSeek-Nutzung',
+      'panel.title': 'DeepSeek-Nutzung',
+      'panel.subtitle': 'Kontostand und Token-Verbrauch der Sitzungen auf diesem Gerät.',
+      'action.refresh': 'Aktualisieren',
+      'action.usage': 'Nutzungsdetails',
+      'action.topUp': 'Aufladen',
+      'state.loading': 'Wird geladen…',
+      'state.failed': 'Nutzungsdaten konnten nicht geladen werden.',
+      'state.retry': 'Erneut versuchen',
+      'account.title': 'Konto und Guthaben',
+      'account.signedOut': 'Nicht angemeldet',
+      'account.signedOutHint': 'Melden Sie sich unter Einstellungen → Konto an, um Ihr Guthaben zu sehen.',
+      'account.unavailable': 'Kontodienst nicht verfügbar',
+      'account.unnamed': 'DeepSeek-Konto',
+      'balance.recharge': 'Aufladeguthaben',
+      'balance.bonus': 'Bonus',
+      'balance.total': 'Gesamtguthaben',
+      'balance.failed': 'Guthaben nicht verfügbar',
+      'tokens.title': 'Token-Nutzung',
+      'tokens.input': 'Eingabe',
+      'tokens.cached': 'Zwischengespeicherte Eingabe',
+      'tokens.output': 'Ausgabe',
+      'tokens.total': 'Gesamt',
+      'tokens.empty': 'Noch keine Sitzungen. Starten Sie eine Unterhaltung, um die Token-Nutzung zu sehen.',
+      'tokens.truncated': 'Die neuesten {shown} von {total} Sitzungen werden angezeigt.',
+      'tokens.note': 'Aus den Sitzungsprotokollen dieses Geräts berechnet. Nur zur Information, keine Abrechnung.',
+      'cost.title': 'Kumulierte Ausgaben (offiziell)',
+      'cost.loading': 'Offizielle Daten werden gelesen…',
+      'cost.failed': 'Offizielle kumulierte Ausgaben nicht verfügbar',
+      'cost.empty': 'Noch keine offiziellen kumulierten Ausgaben',
+      'cost.signedOut': 'Melden Sie sich in DSH bei DeepSeek an, um den offiziellen Gesamtbetrag zu lesen.',
+      'cost.note': 'Aus den offiziellen DeepSeek-Kontodaten; möglicherweise bis zu fünf Minuten verzögert. Kosten pro Sitzung bleiben lokale Schätzungen.',
+      'column.session': 'Sitzung',
+      'column.tokens': 'Tokens',
+      'column.context': 'Kontext',
+      'column.updated': 'Aktualisiert',
+      'badge.live': 'Live',
+      'badge.subagent': 'Untersitzung',
+      'untitled': 'Unbenannte Sitzung',
+      'updated.at': 'Aktualisiert um {time}',
+    }
+
+    const ru = {
+      'panel.label': 'Использование DeepSeek',
+      'panel.title': 'Использование DeepSeek',
+      'panel.subtitle': 'Баланс аккаунта и расход токенов в сессиях на этом устройстве.',
+      'action.refresh': 'Обновить',
+      'action.usage': 'Детали использования',
+      'action.topUp': 'Пополнить',
+      'state.loading': 'Загрузка…',
+      'state.failed': 'Не удалось загрузить данные об использовании.',
+      'state.retry': 'Повторить',
+      'account.title': 'Аккаунт и баланс',
+      'account.signedOut': 'Вход не выполнен',
+      'account.signedOutHint': 'Войдите в «Настройки → Аккаунт», чтобы увидеть баланс.',
+      'account.unavailable': 'Сервис аккаунта недоступен',
+      'account.unnamed': 'Аккаунт DeepSeek',
+      'balance.recharge': 'Баланс пополнения',
+      'balance.bonus': 'Бонус',
+      'balance.total': 'Общий баланс',
+      'balance.failed': 'Баланс недоступен',
+      'tokens.title': 'Расход токенов',
+      'tokens.input': 'Ввод',
+      'tokens.cached': 'Ввод из кэша',
+      'tokens.output': 'Вывод',
+      'tokens.total': 'Всего',
+      'tokens.empty': 'Сессий пока нет. Начните диалог, чтобы увидеть расход токенов.',
+      'tokens.truncated': 'Показаны последние {shown} из {total} сессий.',
+      'tokens.note': 'Рассчитано по журналам сессий этого устройства. Только для справки, не является биллинговой записью.',
+      'cost.title': 'Общий расход (официальные данные)',
+      'cost.loading': 'Загрузка официальных данных…',
+      'cost.failed': 'Официальный общий расход недоступен',
+      'cost.empty': 'Официальных данных о расходах пока нет',
+      'cost.signedOut': 'Войдите в DeepSeek в DSH, чтобы получить официальный итог.',
+      'cost.note': 'Данные официального аккаунта DeepSeek; задержка может составлять до пяти минут. Расход по сессиям остаётся локальной оценкой.',
+      'column.session': 'Сессия',
+      'column.tokens': 'Токены',
+      'column.context': 'Контекст',
+      'column.updated': 'Обновлено',
+      'badge.live': 'Активна',
+      'badge.subagent': 'Подсессия',
+      'untitled': 'Сессия без названия',
+      'updated.at': 'Обновлено в {time}',
+    }
+
+    const pt = {
+      'panel.label': 'Uso do DeepSeek',
+      'panel.title': 'Uso do DeepSeek',
+      'panel.subtitle': 'Saldo da conta e consumo de tokens das sessões deste dispositivo.',
+      'action.refresh': 'Atualizar',
+      'action.usage': 'Detalhes de uso',
+      'action.topUp': 'Recarregar',
+      'state.loading': 'Carregando…',
+      'state.failed': 'Não foi possível carregar os dados de uso.',
+      'state.retry': 'Tentar novamente',
+      'account.title': 'Conta e saldo',
+      'account.signedOut': 'Não conectado',
+      'account.signedOutHint': 'Entre em Configurações → Conta para ver seu saldo.',
+      'account.unavailable': 'Serviço de conta indisponível',
+      'account.unnamed': 'Conta DeepSeek',
+      'balance.recharge': 'Saldo de recarga',
+      'balance.bonus': 'Bônus',
+      'balance.total': 'Saldo total',
+      'balance.failed': 'Saldo indisponível',
+      'tokens.title': 'Uso de tokens',
+      'tokens.input': 'Entrada',
+      'tokens.cached': 'Entrada em cache',
+      'tokens.output': 'Saída',
+      'tokens.total': 'Total',
+      'tokens.empty': 'Ainda não há sessões. Inicie uma conversa para ver o uso de tokens.',
+      'tokens.truncated': 'Mostrando as últimas {shown} de {total} sessões.',
+      'tokens.note': 'Calculado a partir dos registros de sessão deste dispositivo. Apenas informativo, não é um registro de cobrança.',
+      'cost.title': 'Gasto acumulado (oficial)',
+      'cost.loading': 'Lendo dados oficiais…',
+      'cost.failed': 'Gasto acumulado oficial indisponível',
+      'cost.empty': 'Ainda não há gasto acumulado oficial',
+      'cost.signedOut': 'Entre no DeepSeek pelo DSH para consultar o total oficial.',
+      'cost.note': 'Vem dos dados oficiais de uso da conta DeepSeek e pode atrasar até cinco minutos. Os custos por sessão continuam sendo estimativas locais.',
+      'column.session': 'Sessão',
+      'column.tokens': 'Tokens',
+      'column.context': 'Contexto',
+      'column.updated': 'Atualizado',
+      'badge.live': 'Ao vivo',
+      'badge.subagent': 'Subsessão',
+      'untitled': 'Sessão sem título',
+      'updated.at': 'Atualizado às {time}',
+    }
+
+    const groupedFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 })
+    const compactFormatter = new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 })
+
+    const CSS = `
+.dsu-root{height:100%;overflow:auto;padding:24px 24px 32px;box-sizing:border-box;color:var(--dsw-alias-label-primary);background:transparent}
+.dsu-inner{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.dsu-header{display:flex;align-items:flex-start;justify-content:flex-end;gap:16px;flex-wrap:wrap}
+.dsu-title{margin:0;font-size:20px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.dsu-subtitle{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--dsw-alias-label-secondary);max-width:56ch}
+.dsu-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dsu-btn{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:8px;border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);font:inherit;font-size:13px;line-height:1;cursor:pointer;text-decoration:none;white-space:nowrap}
+.dsu-btn:hover{background:var(--dsw-alias-bg-layer-2);border-color:var(--dsw-alias-border-l2)}
+.dsu-btn:disabled{opacity:.6;cursor:default}
+.dsu-btn svg{width:14px;height:14px;flex:none}
+.dsu-card{background:var(--dsw-alias-bg-layer-1);border:1px solid var(--dsw-alias-border-l1);border-radius:12px;padding:16px}
+.dsu-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.dsu-h2{margin:0;font-size:14px;font-weight:600;line-height:1.4}
+.dsu-muted{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:1.5;margin:0}
+.dsu-profile{display:flex;align-items:center;gap:10px;margin-bottom:14px;min-width:0}
+.dsu-avatar{width:36px;height:36px;border-radius:50%;flex:none;object-fit:cover;background:var(--dsw-alias-bg-layer-2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--dsw-alias-label-secondary);border:1px solid var(--dsw-alias-border-l1)}
+.dsu-profile-name{font-size:14px;font-weight:600;line-height:1.4;word-break:break-word}
+.dsu-profile-contact{font-size:12px;color:var(--dsw-alias-label-secondary);line-height:1.4;word-break:break-word}
+.dsu-wallets{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.dsu-wallet{border:1px solid var(--dsw-alias-border-l1);border-radius:10px;padding:10px 12px;background:var(--dsw-alias-bg-layer-2);min-width:0}
+.dsu-wallet-label{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--dsw-alias-label-secondary)}
+.dsu-wallet-value{margin-top:4px;font-size:20px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums;word-break:break-word}
+.dsu-wallet-currency{font-size:11px;color:var(--dsw-alias-label-secondary);font-weight:500;margin-left:4px}
+.dsu-wallet-split{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:11px;line-height:1.4;color:var(--dsw-alias-label-secondary)}
+.dsu-wallet-split b{font-weight:600;color:var(--dsw-alias-label-primary);font-variant-numeric:tabular-nums}
+.dsu-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.dsu-stat{border:1px solid var(--dsw-alias-border-l1);border-radius:10px;padding:10px 12px;background:var(--dsw-alias-bg-layer-2);min-width:0}
+.dsu-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--dsw-alias-label-secondary)}
+.dsu-stat-value{margin-top:4px;font-size:18px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums;word-break:break-word}
+.dsu-list{display:flex;flex-direction:column}
+.dsu-row{display:grid;grid-template-columns:minmax(0,1fr) 96px 112px 78px;gap:10px;align-items:center;padding:9px 4px;border-top:1px solid var(--dsw-alias-border-l1);font-size:13px}
+.dsu-row-head{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--dsw-alias-label-secondary);border-top:0;padding-top:0;padding-bottom:4px}
+.dsu-session{min-width:0}
+.dsu-session-title{display:flex;align-items:center;gap:6px;min-width:0;font-weight:500}
+.dsu-session-title>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dsu-session-meta{margin-top:2px;font-size:11px;color:var(--dsw-alias-label-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dsu-badge{flex:none;font-size:10px;line-height:1;padding:2px 5px;border-radius:999px;border:1px solid var(--dsw-alias-border-l1);color:var(--dsw-alias-label-secondary);background:var(--dsw-alias-bg-base);font-weight:600;letter-spacing:.02em}
+.dsu-badge-live{color:var(--dsw-alias-state-success-primary);border-color:var(--dsw-alias-state-success-primary)}
+.dsu-num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.dsu-num small{display:block;font-size:10px;color:var(--dsw-alias-label-secondary)}
+.dsu-bar{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.dsu-bar-track{width:52px;height:4px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);overflow:hidden;flex:none}
+.dsu-bar-fill{height:100%;border-radius:999px;background:var(--dsw-alias-brand-primary)}
+.dsu-bar-fill.is-warn{background:var(--dsw-alias-state-warn-primary)}
+.dsu-bar-label{font-size:11px;color:var(--dsw-alias-label-secondary);font-variant-numeric:tabular-nums;width:36px;text-align:right}
+.dsu-empty{padding:18px 4px;font-size:13px;color:var(--dsw-alias-label-secondary)}
+.dsu-note{margin:0;font-size:11px;line-height:1.5;color:var(--dsw-alias-label-secondary)}
+.dsu-notes{display:flex;flex-direction:column;gap:4px}
+.dsu-cost{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--dsw-alias-border-l1);border-radius:10px;padding:10px 12px;margin-bottom:14px;background:var(--dsw-alias-bg-base)}
+.dsu-cost-label{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--dsw-alias-label-secondary)}
+.dsu-cost-value{display:flex;align-items:baseline;gap:8px;font-size:20px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums}
+.dsu-cost-count{font-size:11px;font-weight:500;color:var(--dsw-alias-label-secondary)}
+.dsu-error{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--dsw-alias-state-error-primary);border-radius:10px;padding:10px 12px;font-size:13px}
+.dsu-error-text{min-width:0;word-break:break-word}
+.dsu-status{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--dsw-alias-label-secondary);font-variant-numeric:tabular-nums}
+.dsu-spin{width:12px;height:12px;border-radius:50%;border:2px solid var(--dsw-alias-border-l2);border-top-color:var(--dsw-alias-brand-primary);animation:dsu-spin .8s linear infinite;flex:none}
+@keyframes dsu-spin{to{transform:rotate(360deg)}}
+@media (max-width:640px){
+.dsu-root{padding:16px}
+.dsu-row{grid-template-columns:minmax(0,1fr) 84px 84px}
+.dsu-col-updated{display:none}
+}
+@media (prefers-reduced-motion:reduce){.dsu-spin{animation:none}}
+`
+
+    /**
+     * Resolve a translation function even if locale injection is unavailable.
+     * @param translate - component's `t` prop.
+     * @returns a key-based translator.
+     */
+    function translatorOf(translate) {
+      return typeof translate === 'function' ? translate : (key) => key
+    }
+
+    /**
+     * Fill `{name}` placeholders in one localized template.
+     * @param template - localized text.
+     * @param values - replacement values.
+     * @returns the filled text.
+     */
+    function fill(template, values) {
+      let text = String(template)
+      for (const [name, value] of Object.entries(values)) {
+        text = text.replaceAll(`{${name}}`, String(value))
+      }
+      return text
+    }
+
+    /**
+     * Format one token count for a card or a table cell.
+     * @param value - count, possibly absent.
+     * @returns localized text.
+     */
+    function count(value) {
+      if (typeof value !== 'number' || !Number.isFinite(value)) return '—'
+      if (value >= 100000) return compactFormatter.format(value)
+      return groupedFormatter.format(value)
+    }
+
+    /**
+     * Format a full count for a tooltip.
+     * @param value - count.
+     * @returns grouped text.
+     */
+    function exact(value) {
+      return typeof value === 'number' && Number.isFinite(value) ? groupedFormatter.format(value) : '—'
+    }
+
+    /**
+     * Render Platform's decimal balance string without its trailing padding.
+     * @param value - original balance string.
+     * @returns display text.
+     */
+    function amount(value) {
+      const text = String(value)
+      if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(text)) return text
+      const parsed = Number(text)
+      if (!Number.isFinite(parsed)) return text
+      return new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 6,
+      }).format(parsed)
+    }
+
+    /**
+     * Render one estimated CNY cost, keeping four decimals below one yuan.
+     * @param value - estimated cost.
+     * @returns display text with a yuan sign.
+     */
+    function costText(value) {
+      if (typeof value !== 'number' || !Number.isFinite(value)) return '—'
+      const digits = value > 0 && value < 1 ? 4 : 2
+      return `¥${new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
+      }).format(value)}`
+    }
+
+    /**
+     * Format the official cumulative amount to the two decimals shown by Platform.
+     * @param value - official decimal amount.
+     * @param currency - official currency code.
+     * @returns a currency symbol and amount.
+     */
+    function officialCostText(value, currency) {
+      const parsed = Number(value)
+      if (!Number.isFinite(parsed)) return '—'
+      const formatted = new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(parsed)
+      return `${currencySymbol(currency)}${formatted}`
+    }
+
+    /**
+     * The symbol shown before a wallet amount.
+     * @param currency - wallet currency.
+     * @returns the symbol.
+     */
+    function currencySymbol(currency) {
+      if (currency === 'USD') return '$'
+      if (currency === 'CNY') return '¥'
+      return ''
+    }
+
+    /**
+     * Format a timestamp as a local clock time or date.
+     * @param value - epoch milliseconds.
+     * @returns display text or an em dash.
+     */
+    function clock(value) {
+      if (typeof value !== 'number' || !Number.isFinite(value)) return '—'
+      const date = new Date(value)
+      const now = new Date()
+      if (date.toDateString() === now.toDateString()) {
+        return date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })
+      }
+      return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+    }
+
+    /**
+     * The context-usage percentage for one session row.
+     * @param row - session row from the Host.
+     * @returns an integer percentage, or null when unknown.
+     */
+    function contextPercent(row) {
+      if (typeof row.contextTokens !== 'number' || typeof row.contextWindow !== 'number') return null
+      if (row.contextWindow <= 0) return null
+      return Math.max(0, Math.min(100, Math.round((row.contextTokens / row.contextWindow) * 100)))
+    }
+
+    /**
+     * A session row's combined billed token count.
+     * @param row - session row.
+     * @returns input plus output tokens.
+     */
+    function sessionTotal(row) {
+      const input = typeof row.inputTokens === 'number' ? row.inputTokens : 0
+      const cached = typeof row.cacheReadTokens === 'number' ? row.cacheReadTokens : 0
+      const written = typeof row.cacheWriteTokens === 'number' ? row.cacheWriteTokens : 0
+      const output = typeof row.outputTokens === 'number' ? row.outputTokens : 0
+      return input + cached + written + output
+    }
+
+    /**
+     * The browser's preferred locale for Platform client metadata.
+     * @returns a locale tag.
+     */
+    function preferredLocale() {
+      const documentLocale = typeof document !== 'undefined'
+        ? document.documentElement.getAttribute('lang')
+        : null
+      if (typeof documentLocale === 'string' && documentLocale !== '') return documentLocale
+      return typeof navigator !== 'undefined' && typeof navigator.language === 'string'
+        ? navigator.language
+        : 'en'
+    }
+
+    function refreshIcon() {
+      return h('svg', { viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+        h('path', {
+          d: 'M13 6.5A5.25 5.25 0 1 0 13.2 9.6',
+          stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round',
+        }),
+        h('path', {
+          d: 'M13 2.8v3.9H9.1',
+          stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round',
+        }),
+      )
+    }
+
+    function externalIcon() {
+      return h('svg', { viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+        h('path', {
+          d: 'M9.5 3h3.5v3.5M12.8 3.2 7.4 8.6',
+          stroke: 'currentColor', strokeWidth: 1.4, strokeLinecap: 'round', strokeLinejoin: 'round',
+        }),
+        h('path', {
+          d: 'M12 9.6v2.15A1.25 1.25 0 0 1 10.75 13h-6.5A1.25 1.25 0 0 1 3 11.75v-6.5A1.25 1.25 0 0 1 4.25 4H6.4',
+          stroke: 'currentColor', strokeWidth: 1.4, strokeLinecap: 'round',
+        }),
+      )
+    }
+
+    /**
+     * The sidebar cell: one 16px mark that follows the host's color.
+     * @param props - owner icon props.
+     * @returns the icon element.
+     */
+    function PanelIcon(props) {
+      const size = typeof props.size === 'number' && props.size > 0 ? props.size : 16
+      const active = props.active === true
+      return h('svg', {
+        width: size,
+        height: size,
+        viewBox: '0 0 16 16',
+        fill: 'none',
+        'aria-hidden': true,
+        focusable: 'false',
+        style: { display: 'block' },
+      },
+      h('rect', {
+        x: 1.75, y: 3.4, width: 12.5, height: 9.2, rx: 2.4,
+        stroke: 'currentColor', strokeWidth: active ? 1.6 : 1.4,
+        opacity: active ? 1 : 0.9,
+      }),
+      h('path', {
+        d: 'M1.9 6.2h12.2',
+        stroke: 'currentColor', strokeWidth: 1.3, opacity: 0.75,
+      }),
+      h('circle', {
+        cx: 11.1, cy: 8.9, r: 1.05,
+        fill: 'currentColor', opacity: active ? 1 : 0.8,
+      }),
+      )
+    }
+
+    /**
+     * The DeepSeek usage page in the main column.
+     * @param props - locale `t` and standard slot props.
+     * @returns the panel element.
+     */
+    function UsagePanel(props) {
+      const t = translatorOf(props.deepseekT ?? props.t)
+      const [version, setVersion] = React.useState(0)
+      const forceRef = React.useRef(false)
+      const [state, setState] = React.useState({ status: 'loading', data: null, error: null })
+      const [officialSpend, setOfficialSpend] = React.useState({ status: 'loading', data: null, error: null })
+
+      React.useEffect(() => {
+        const controller = new AbortController()
+        let alive = true
+        const force = forceRef.current
+        setState((previous) => ({
+          status: previous.data === null ? 'loading' : 'refreshing',
+          data: previous.data,
+          error: null,
+        }))
+        fetch(ROUTE, {
+          signal: controller.signal,
+          credentials: 'same-origin',
+          headers: {
+            accept: 'application/json',
+            'x-dsh-usage-locale': preferredLocale(),
+            'x-dsh-usage-timezone-offset': String(-new Date().getTimezoneOffset() * 60),
+            'x-dsh-usage-refresh': force ? '1' : '0',
+          },
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`)
+            return response.json()
+          })
+          .then((data) => {
+            if (!alive) return
+            if (data !== null && typeof data === 'object' && typeof data.error === 'string') {
+              throw new Error(data.error)
+            }
+            setState({ status: 'ready', data, error: null })
+          })
+          .catch((error) => {
+            if (!alive || (error !== null && typeof error === 'object' && error.name === 'AbortError')) return
+            setState((previous) => ({
+              status: previous.data === null ? 'error' : 'ready',
+              data: previous.data,
+              error: error instanceof Error ? error.message : String(error),
+            }))
+          })
+        return () => {
+          alive = false
+          controller.abort()
+        }
+      }, [version])
+
+      React.useEffect(() => {
+        const controller = new AbortController()
+        let alive = true
+        setOfficialSpend((previous) => ({
+          status: previous.data === null ? 'loading' : 'refreshing',
+          data: previous.data,
+          error: null,
+        }))
+        fetch(OFFICIAL_ROUTE, {
+          signal: controller.signal,
+          credentials: 'same-origin',
+          headers: {
+            accept: 'application/json',
+            'x-dsh-usage-locale': preferredLocale(),
+            'x-dsh-usage-timezone-offset': String(-new Date().getTimezoneOffset() * 60),
+            'x-dsh-usage-refresh': forceRef.current ? '1' : '0',
+          },
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`)
+            return response.json()
+          })
+          .then((payload) => {
+            if (!alive) return
+            if (payload !== null && typeof payload === 'object' && typeof payload.error === 'string') {
+              throw new Error(payload.error)
+            }
+            const value = payload !== null && typeof payload === 'object' ? payload.officialSpend : null
+            if (value === null || typeof value !== 'object') throw new Error('malformed official spend payload')
+            setOfficialSpend({ status: 'ready', data: value, error: null })
+          })
+          .catch((error) => {
+            if (!alive || (error !== null && typeof error === 'object' && error.name === 'AbortError')) return
+            setOfficialSpend((previous) => ({
+              status: previous.data === null ? 'error' : 'ready',
+              data: previous.data,
+              error: error instanceof Error ? error.message : String(error),
+            }))
+          })
+        return () => {
+          alive = false
+          controller.abort()
+        }
+      }, [version])
+
+      React.useEffect(() => {
+        const timer = window.setInterval(() => {
+          if (document.visibilityState !== 'visible') return
+          forceRef.current = false
+          setVersion((value) => value + 1)
+        }, 60_000)
+        return () => window.clearInterval(timer)
+      }, [])
+
+      const refreshing = state.status === 'loading' || state.status === 'refreshing'
+      const data = state.data
+      const account = data !== null && data !== undefined && typeof data === 'object'
+        ? data.account
+        : null
+      const tokens = data !== null && data !== undefined && typeof data === 'object'
+        ? data.tokens
+        : null
+
+      function refresh() {
+        forceRef.current = true
+        setVersion((value) => value + 1)
+      }
+
+      function errorBanner(message) {
+        return h('div', { className: 'dsu-error', role: 'alert' },
+          h('span', { className: 'dsu-error-text' }, `${t('state.failed')} ${message}`),
+          h('button', { type: 'button', className: 'dsu-btn', onClick: refresh }, t('state.retry')),
+        )
+      }
+
+      function accountLinks(links) {
+        if (links === null || typeof links !== 'object') return null
+        const items = []
+        if (typeof links.usageUrl === 'string' && links.usageUrl !== '') {
+          items.push(h('a', {
+            key: 'usage',
+            className: 'dsu-btn',
+            href: links.usageUrl,
+            target: '_blank',
+            rel: 'noreferrer',
+          }, externalIcon(), t('action.usage')))
+        }
+        if (typeof links.topUpUrl === 'string' && links.topUpUrl !== '') {
+          items.push(h('a', {
+            key: 'topup',
+            className: 'dsu-btn',
+            href: links.topUpUrl,
+            target: '_blank',
+            rel: 'noreferrer',
+          }, externalIcon(), t('action.topUp')))
+        }
+        if (items.length === 0) return null
+        return h('div', { className: 'dsu-actions' }, items)
+      }
+
+      function numeric(value) {
+        const parsed = Number(value)
+        return Number.isFinite(parsed) ? parsed : 0
+      }
+
+      function groupedWallets(wallets, bonusWallets) {
+        const groups = new Map()
+        const ensure = (currency) => {
+          const key = currency === 'USD' ? 'USD' : 'CNY'
+          let group = groups.get(key)
+          if (group === undefined) {
+            group = { currency: key, recharge: 0, bonus: 0 }
+            groups.set(key, group)
+          }
+          return group
+        }
+        for (const wallet of wallets) {
+          if (wallet === null || typeof wallet !== 'object') continue
+          ensure(wallet.currency).recharge += numeric(wallet.balance)
+        }
+        for (const wallet of bonusWallets) {
+          if (wallet === null || typeof wallet !== 'object') continue
+          ensure(wallet.currency).bonus += numeric(wallet.balance)
+        }
+        const ordered = []
+        for (const currency of ['CNY', 'USD']) {
+          const group = groups.get(currency)
+          if (group !== undefined) ordered.push(group)
+        }
+        return ordered
+      }
+
+      function money(currency, value) {
+        return `${currencySymbol(currency)}${amount(String(value))}`
+      }
+
+      function walletCard(group) {
+        const total = group.recharge + group.bonus
+        return h('div', { className: 'dsu-wallet', key: group.currency },
+          h('div', { className: 'dsu-wallet-label' }, `${t('balance.total')} · ${group.currency}`),
+          h('div', { className: 'dsu-wallet-value', title: `${amount(String(total))} ${group.currency}` },
+            money(group.currency, total),
+            h('span', { className: 'dsu-wallet-currency' }, group.currency),
+          ),
+          h('div', { className: 'dsu-wallet-split' },
+            h('span', null, `${t('balance.recharge')} `, h('b', null, money(group.currency, group.recharge))),
+            h('span', null, `${t('balance.bonus')} `, h('b', null, money(group.currency, group.bonus))),
+          ),
+        )
+      }
+
+      function emptyWalletCard() {
+        return h('div', { className: 'dsu-wallet' },
+          h('div', { className: 'dsu-wallet-label' }, t('balance.total')),
+          h('div', { className: 'dsu-wallet-value' }, '—'),
+          h('div', { className: 'dsu-wallet-split' },
+            h('span', null, `${t('balance.recharge')} —`),
+            h('span', null, `${t('balance.bonus')} —`),
+          ),
+        )
+      }
+
+      function accountSection() {
+        const head = h('div', { className: 'dsu-section-head' },
+          h('h2', { className: 'dsu-h2' }, t('account.title')),
+          account !== null && typeof account === 'object' ? accountLinks(account.links) : null,
+        )
+
+        if (account === null || account === undefined) {
+          return h('section', { className: 'dsu-card' }, head, h('p', { className: 'dsu-muted' }, t('state.loading')))
+        }
+        if (account.available === false) {
+          return h('section', { className: 'dsu-card' }, head,
+            h('p', { className: 'dsu-muted' }, t('account.unavailable')))
+        }
+        if (account.status === 'signed-out') {
+          return h('section', { className: 'dsu-card' }, head,
+            h('div', { className: 'dsu-profile-name' }, t('account.signedOut')),
+            h('p', { className: 'dsu-muted' }, t('account.signedOutHint')))
+        }
+        if (account.status === 'error') {
+          return h('section', { className: 'dsu-card' }, head,
+            h('p', { className: 'dsu-muted' }, `${t('account.unavailable')} ${account.error || ''}`))
+        }
+
+        const profile = account.profile !== null && typeof account.profile === 'object' ? account.profile : null
+        const name = profile !== null && typeof profile.name === 'string' && profile.name !== ''
+          ? profile.name
+          : t('account.unnamed')
+        const contact = profile !== null && typeof profile.contact === 'string' && profile.contact !== ''
+          ? profile.contact
+          : null
+        const avatarUrl = profile !== null && typeof profile.avatarUrl === 'string' ? profile.avatarUrl : null
+        const initial = name.trim().slice(0, 1).toUpperCase()
+
+        const balance = account.balance !== null && typeof account.balance === 'object' ? account.balance : null
+        const wallets = balance !== null && Array.isArray(balance.wallets) ? balance.wallets : []
+        const bonusWallets = balance !== null && Array.isArray(balance.bonusWallets) ? balance.bonusWallets : []
+        const groups = groupedWallets(wallets, bonusWallets)
+
+        return h('section', { className: 'dsu-card' },
+          head,
+          h('div', { className: 'dsu-profile' },
+            avatarUrl !== null
+              ? h('img', { className: 'dsu-avatar', src: avatarUrl, alt: '', referrerPolicy: 'no-referrer' })
+              : h('div', { className: 'dsu-avatar', 'aria-hidden': true }, initial),
+            h('div', { style: { minWidth: 0 } },
+              h('div', { className: 'dsu-profile-name' }, name),
+              contact !== null ? h('div', { className: 'dsu-profile-contact' }, contact) : null,
+            ),
+          ),
+          account.balanceFailed === true
+            ? h('p', { className: 'dsu-muted' }, t('balance.failed'))
+            : h('div', { className: 'dsu-wallets' },
+              groups.length > 0 ? groups.map(walletCard) : [emptyWalletCard()]),
+        )
+      }
+
+      function stat(label, value, hint) {
+        return h('div', { className: 'dsu-stat' },
+          h('div', { className: 'dsu-stat-label' }, label),
+          h('div', { className: 'dsu-stat-value' }, value,
+            hint !== undefined ? h('small', null, hint) : null),
+        )
+      }
+
+      function sessionRow(row) {
+        const percent = contextPercent(row)
+        const warn = percent !== null && percent >= 80
+        const meta = []
+        if (typeof row.model === 'string' && row.model !== '') meta.push(row.model)
+        if (typeof row.calls === 'number' && row.calls > 0) meta.push(`${exact(row.calls)} ${row.calls === 1 ? 'call' : 'calls'}`)
+        if (typeof row.cost === 'number' && row.cost > 0) meta.push(`≈${costText(row.cost)}`)
+        if (row.contextApprox === true && percent !== null) meta.push('≈')
+        if (row.error === 'read-failed') meta.push(t('state.failed'))
+
+        return h('div', { className: 'dsu-row', role: 'row', key: row.id },
+          h('div', { className: 'dsu-session', role: 'cell' },
+            h('div', { className: 'dsu-session-title' },
+              h('span', { title: row.id }, typeof row.title === 'string' && row.title !== '' ? row.title : t('untitled')),
+              row.live === true ? h('span', { className: 'dsu-badge dsu-badge-live' }, t('badge.live')) : null,
+              row.subagent === true ? h('span', { className: 'dsu-badge' }, t('badge.subagent')) : null,
+            ),
+            meta.length > 0 ? h('div', { className: 'dsu-session-meta' }, meta.join(' · ')) : null,
+          ),
+          h('div', {
+            className: 'dsu-num',
+            role: 'cell',
+            title: `${exact(sessionTotal(row))} tokens · in ${exact(row.inputTokens)} · cached ${exact(row.cacheReadTokens)} · out ${exact(row.outputTokens)}`,
+          },
+            count(sessionTotal(row)),
+            h('small', null, `${count(row.inputTokens)} / ${count(row.outputTokens)}`),
+          ),
+          h('div', { role: 'cell' },
+            percent === null
+              ? h('div', { className: 'dsu-bar' }, h('span', { className: 'dsu-bar-label' }, '—'))
+              : h('div', { className: 'dsu-bar', title: `${exact(row.contextTokens)} / ${exact(row.contextWindow)}` },
+                h('div', { className: 'dsu-bar-track' },
+                  h('div', {
+                    className: warn ? 'dsu-bar-fill is-warn' : 'dsu-bar-fill',
+                    style: { width: `${Math.max(2, percent)}%` },
+                  })),
+                h('span', { className: 'dsu-bar-label' }, `${row.contextApprox === true ? '≈' : ''}${percent}%`),
+              ),
+          ),
+          h('div', { className: 'dsu-num dsu-col-updated', role: 'cell' }, clock(row.lastActivityAt ?? row.createdAt)),
+        )
+      }
+
+      function costStrip() {
+        const data = officialSpend.data
+        const ready = data !== null && typeof data === 'object'
+          && data.available === true && Array.isArray(data.totalCosts)
+        const totals = ready ? data.totalCosts : []
+        const unavailable = data !== null && typeof data === 'object' && data.available === false
+        const value = ready
+          ? totals.length === 0
+            ? h('div', { className: 'dsu-cost-value dsu-muted' }, t('cost.empty'))
+            : h('div', { className: 'dsu-cost-value' }, totals.map((total) =>
+              h('span', {
+                key: total.currency,
+                title: `${total.amount} ${total.currency}`,
+              }, `${officialCostText(total.amount, total.currency)} ${total.currency}`),
+            ))
+          : unavailable || officialSpend.status === 'error'
+            ? h('div', { className: 'dsu-cost-value dsu-muted' },
+              data?.status === 'signed-out' ? t('cost.signedOut') : t('cost.failed'))
+            : h('div', { className: 'dsu-cost-value' },
+              h('span', { className: 'dsu-spin', 'aria-hidden': true }),
+              t('cost.loading'))
+        return h('div', { className: 'dsu-cost' },
+          h('div', { className: 'dsu-cost-label' }, t('cost.title')),
+          value,
+        )
+      }
+
+      function tokenSection() {
+        const totals = tokens !== null && typeof tokens === 'object' && tokens.totals !== null
+          ? tokens.totals
+          : { inputTokens: 0, uncachedInputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0, outputTokens: 0, reasoningTokens: 0, totalTokens: 0, calls: 0 }
+
+        const head = h('div', { className: 'dsu-section-head' },
+          h('h2', { className: 'dsu-h2' }, t('tokens.title')),
+          tokens !== null && typeof tokens === 'object' && tokens.available === true && tokens.truncated === true
+            ? h('span', { className: 'dsu-muted' }, fill(t('tokens.truncated'), {
+              shown: tokens.scanned,
+              total: tokens.total,
+            }))
+            : null,
+        )
+
+        if (tokens === null || tokens === undefined) {
+          return h('section', { className: 'dsu-card' }, head, h('p', { className: 'dsu-muted' }, t('state.loading')))
+        }
+        if (tokens.available === false) {
+          return h('section', { className: 'dsu-card' }, head,
+            h('p', { className: 'dsu-muted' }, tokens.error || t('state.failed')))
+        }
+
+        const rows = Array.isArray(tokens.sessions) ? tokens.sessions : []
+        const header = h('div', { className: 'dsu-row dsu-row-head', role: 'row' },
+          h('div', { role: 'columnheader' }, t('column.session')),
+          h('div', { className: 'dsu-num', role: 'columnheader' }, t('column.tokens')),
+          h('div', { role: 'columnheader', style: { textAlign: 'right' } }, t('column.context')),
+          h('div', { className: 'dsu-num dsu-col-updated', role: 'columnheader' }, t('column.updated')),
+        )
+
+        const extra = []
+        if (typeof totals.cacheWriteTokens === 'number' && totals.cacheWriteTokens > 0) {
+          extra.push(`cache write ${count(totals.cacheWriteTokens)}`)
+        }
+        if (typeof totals.reasoningTokens === 'number' && totals.reasoningTokens > 0) {
+          extra.push(`reasoning ${count(totals.reasoningTokens)}`)
+        }
+
+        return h('section', { className: 'dsu-card' },
+          head,
+          h('div', { className: 'dsu-stats' },
+            stat(t('tokens.input'), count(totals.uncachedInputTokens)),
+            stat(t('tokens.cached'), count(totals.cacheReadTokens)),
+            stat(t('tokens.output'), count(totals.outputTokens)),
+            stat(t('tokens.total'), count(totals.totalTokens)),
+          ),
+          extra.length > 0 ? h('p', { className: 'dsu-muted', style: { marginTop: -6, marginBottom: 10 } }, extra.join(' · ')) : null,
+          costStrip(),
+          rows.length === 0
+            ? h('p', { className: 'dsu-empty' }, t('tokens.empty'))
+            : h('div', { className: 'dsu-list', role: 'table', 'aria-label': t('tokens.title') },
+              header,
+              rows.map(sessionRow),
+            ),
+        )
+      }
+
+      return h('div', { className: 'dsu-root' },
+        h('style', null, CSS),
+        h('div', { className: 'dsu-inner' },
+          h('header', { className: 'dsu-header' },
+            h('div', { className: 'dsu-actions' },
+              h('div', { className: 'dsu-status' },
+                refreshing ? h('span', { className: 'dsu-spin', 'aria-hidden': true }) : null,
+                data !== null && data !== undefined && typeof data.generatedAt === 'number'
+                  ? fill(t('updated.at'), { time: clock(data.generatedAt) })
+                  : null,
+              ),
+              h('button', {
+                type: 'button',
+                className: 'dsu-btn',
+                onClick: refresh,
+                disabled: refreshing,
+                'aria-busy': refreshing,
+              }, refreshIcon(), t('action.refresh')),
+            ),
+          ),
+          state.error !== null ? errorBanner(state.error) : null,
+          accountSection(),
+          tokenSection(),
+          h('div', { className: 'dsu-notes' },
+            h('p', { className: 'dsu-note' }, t('tokens.note')),
+            h('p', { className: 'dsu-note' }, t('cost.note')),
+          ),
+        ),
+      )
+
+    }
+
+
+    return { Page: UsagePanel, locales: { zh, en, ja, es, fr, de, ru, pt } }
+    })(React)
+
+    const Hud = (function createUsageHud(React) {
+      const h = React.createElement
+
+    /** Locale namespace owned by the HUD. */
+    const NS = 'usageHud'
+    /** Overlay entry id; also the slot key used by layout. */
+    const ID = 'usage-hud'
+    /** Polling period while the surface is expanded or collapsed. */
+    const POLL_MS = 30000
+    /** Countdown repaint period; resets are shown to the minute. */
+    const TICK_MS = 15000
+    /** Where the position and collapse state live. */
+    const STORAGE_KEY = 'dsh-usage-hud:v1'
+    const ENABLE_EVENT = 'dsh-usage-hud:enabled'
+
+    const zh = {
+      'hud.title': '用量监控',
+      'hud.drag': '拖动移动',
+      'action.refresh': '刷新数据',
+      'action.collapse': '收起为胶囊',
+      'action.expand': '展开用量监控',
+      'state.loading': '读取中…',
+      'state.failed': '读取失败',
+      'state.retry': '重试',
+      'footer.updated': '更新于 {time}',
+      'footer.never': '尚未更新',
+      'footer.poll': '每 {seconds} 秒刷新',
+      'codex.primary': '5 小时',
+      'codex.secondary': '每周',
+      'codex.plan': '{plan}',
+      'codex.source.live': '实时',
+      'codex.source.session': '本地',
+      'codex.stale': '可能过期',
+      'codex.limit': '已达上限',
+      'codex.resetAt': '{time} 重置',
+      'codex.resetIn': '剩 {left}',
+      'codex.noReset': '重置时间未知',
+      'codex.empty': '暂无数据',
+      'codex.fallback': '实时接口不可用，显示本地记录：{message}',
+      'codex.staleNote': '刷新失败，显示上次结果：{message}',
+      'time.soon': '即将重置',
+      'time.lessThanMinute': '不到 1 分钟',
+      'time.minutes': '{n} 分钟',
+      'time.hoursMinutes': '{hours} 小时 {minutes} 分',
+      'time.daysHours': '{days} 天 {hours} 小时',
+      'ds.balance': '总余额',
+      'ds.recharge': '充值 {amount}',
+      'ds.bonus': '赠送 {amount}',
+      'ds.balanceFailed': '余额读取失败',
+      'ds.signedIn': '已连接',
+      'ds.signedOut': '未登录',
+      'ds.unavailable': '账户不可用',
+      'ds.tokens': 'Token 合计',
+      'ds.input': '输入',
+      'ds.cached': '缓存',
+      'ds.output': '输出',
+      'ds.sessions': '{n} 个会话',
+      'ds.sessionsRecent': '最近 {shown} / {total} 个会话',
+      'ds.empty': '暂无会话记录',
+      'ds.context': '当前会话上下文 {percent}%',
+      'ds.contextLabel': '当前会话上下文',
+      'pill.codex': 'Codex',
+      'pill.ds': 'DeepSeek',
+    }
+
+    const en = {
+      'hud.title': 'Usage monitor',
+      'hud.drag': 'Drag to move',
+      'action.refresh': 'Refresh data',
+      'action.collapse': 'Collapse to pill',
+      'action.expand': 'Expand usage monitor',
+      'state.loading': 'Loading…',
+      'state.failed': 'Could not load',
+      'state.retry': 'Retry',
+      'footer.updated': 'Updated {time}',
+      'footer.never': 'Not updated yet',
+      'footer.poll': 'Every {seconds}s',
+      'codex.primary': '5 hours',
+      'codex.secondary': 'Weekly',
+      'codex.plan': '{plan}',
+      'codex.source.live': 'Live',
+      'codex.source.session': 'Local',
+      'codex.stale': 'May be stale',
+      'codex.limit': 'Limit reached',
+      'codex.resetAt': 'resets {time}',
+      'codex.resetIn': '{left} left',
+      'codex.noReset': 'Reset time unknown',
+      'codex.empty': 'No data',
+      'codex.fallback': 'Live endpoint unavailable; showing local record: {message}',
+      'codex.staleNote': 'Refresh failed; showing the last result: {message}',
+      'time.soon': 'resetting now',
+      'time.lessThanMinute': 'under a minute',
+      'time.minutes': '{n}m',
+      'time.hoursMinutes': '{hours}h {minutes}m',
+      'time.daysHours': '{days}d {hours}h',
+      'ds.balance': 'Total balance',
+      'ds.recharge': 'Recharge {amount}',
+      'ds.bonus': 'Bonus {amount}',
+      'ds.balanceFailed': 'Balance unavailable',
+      'ds.signedIn': 'Connected',
+      'ds.signedOut': 'Not signed in',
+      'ds.unavailable': 'Account unavailable',
+      'ds.tokens': 'Tokens',
+      'ds.input': 'Input',
+      'ds.cached': 'Cached',
+      'ds.output': 'Output',
+      'ds.sessions': '{n} sessions',
+      'ds.sessionsRecent': 'Latest {shown} of {total} sessions',
+      'ds.empty': 'No sessions yet',
+      'ds.context': 'Live context {percent}%',
+      'ds.contextLabel': 'Live context',
+      'pill.codex': 'Codex',
+      'pill.ds': 'DeepSeek',
+    }
+
+    const CSS = `
+.uh-root{position:absolute;z-index:30;pointer-events:auto;color:var(--dsw-alias-label-primary);font-family:inherit;font-size:12px;line-height:1.45;-webkit-user-select:none;user-select:none}
+.uh-root.uh-drag,.uh-root.uh-drag *{cursor:grabbing!important}
+.uh-card{box-sizing:border-box;width:304px;border-radius:18px;border:.5px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 90%,transparent);backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);box-shadow:0 18px 48px -20px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.12);overflow:hidden;transition:border-color .15s ease}
+.uh-card:hover{border-color:var(--dsw-alias-border-l3)}
+.uh-head{display:flex;align-items:center;gap:8px;padding:9px 8px 9px 12px;cursor:grab;touch-action:none}
+.uh-dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--dsw-alias-state-idle-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-state-idle-primary) 18%,transparent)}
+.uh-dot[data-tone=ok]{background:var(--dsw-alias-state-success-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-state-success-primary) 20%,transparent)}
+.uh-dot[data-tone=warn]{background:var(--dsw-alias-state-warn-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-state-warn-primary) 22%,transparent)}
+.uh-dot[data-tone=error]{background:var(--dsw-alias-state-error-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-state-error-primary) 22%,transparent)}
+.uh-title{font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.uh-actions{display:flex;align-items:center;gap:2px;margin-left:auto}
+.uh-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer;transition:background .12s ease,color .12s ease}
+.uh-icon:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}
+.uh-icon:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-1px}
+.uh-icon:disabled{cursor:default;opacity:.6}
+.uh-icon[data-busy=true] svg{animation:uh-spin .9s linear infinite}
+.uh-body{display:flex;flex-direction:column;gap:12px;padding:2px 12px 12px}
+.uh-sec{display:flex;flex-direction:column;gap:8px;min-width:0}
+.uh-sec+.uh-sec{padding-top:12px;border-top:.5px solid var(--dsw-alias-border-l1)}
+.uh-sec-head{display:flex;align-items:center;gap:6px;min-height:16px;min-width:0}
+.uh-sec-name{font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--dsw-alias-label-secondary);white-space:nowrap}
+.uh-spacer{flex:1;min-width:0}
+.uh-badge{display:inline-flex;align-items:center;height:16px;max-width:112px;padding:0 6px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-secondary);font-size:9.5px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uh-badge-warn{color:var(--dsw-alias-state-warn-primary);background:color-mix(in srgb,var(--dsw-alias-state-warn-primary) 13%,transparent)}
+.uh-badge-error{color:var(--dsw-alias-state-error-primary);background:color-mix(in srgb,var(--dsw-alias-state-error-primary) 13%,transparent)}
+.uh-metric{display:flex;flex-direction:column;gap:5px;min-width:0}
+.uh-metric-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.uh-metric-label{font-size:11px;color:var(--dsw-alias-label-secondary);white-space:nowrap}
+.uh-metric-value{font-size:16px;font-weight:600;line-height:1.1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.uh-unit{font-size:10px;font-weight:400;color:var(--dsw-alias-label-tertiary);margin-left:1px}
+.uh-meter{position:relative;height:5px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);overflow:hidden}
+.uh-meter-thin{height:3px;flex:1}
+.uh-fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--dsw-alias-brand-primary);transition:width .45s ease}
+.uh-fill[data-tone=warn]{background:var(--dsw-alias-state-warn-primary)}
+.uh-fill[data-tone=error]{background:var(--dsw-alias-state-error-primary)}
+.uh-fill[data-tone=idle]{background:var(--dsw-alias-label-dimmed)}
+.uh-sub{display:flex;align-items:baseline;justify-content:space-between;gap:8px;color:var(--dsw-alias-label-tertiary);font-size:10px;line-height:1.35;font-variant-numeric:tabular-nums}
+.uh-sub span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uh-balance{display:flex;flex-direction:column;gap:2px;min-width:0}
+.uh-balance-main{display:flex;align-items:baseline;gap:6px;min-width:0}
+.uh-balance-value{font-size:22px;font-weight:600;line-height:1.15;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.uh-balance-label{font-size:10px;color:var(--dsw-alias-label-tertiary);white-space:nowrap}
+.uh-split{color:var(--dsw-alias-label-tertiary);font-size:10px;line-height:1.4;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uh-muted{color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.4}
+.uh-stack{display:flex;height:5px;border-radius:999px;overflow:hidden;background:var(--dsw-alias-bg-layer-2)}
+.uh-stack span{height:100%;min-width:0;transition:width .45s ease}
+.uh-seg-input{background:var(--dsw-alias-brand-primary)}
+.uh-seg-cached{background:var(--dsw-alias-brand-primary);opacity:.45}
+.uh-seg-output{background:var(--dsw-alias-state-business-primary)}
+.uh-legend{display:flex;flex-wrap:wrap;gap:3px 10px;color:var(--dsw-alias-label-tertiary);font-size:9.5px;line-height:1.4;font-variant-numeric:tabular-nums}
+.uh-legend span{white-space:nowrap}
+.uh-key{display:inline-block;width:5px;height:5px;border-radius:1.5px;margin-right:4px;vertical-align:1px}
+.uh-key-input{background:var(--dsw-alias-brand-primary)}
+.uh-key-cached{background:var(--dsw-alias-brand-primary);opacity:.45}
+.uh-key-output{background:var(--dsw-alias-state-business-primary)}
+.uh-context{display:flex;align-items:center;gap:8px;color:var(--dsw-alias-label-tertiary);font-size:10px;font-variant-numeric:tabular-nums}
+.uh-context span{white-space:nowrap}
+.uh-note{margin:0;color:var(--dsw-alias-state-warn-primary);font-size:9.5px;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.uh-note-error{color:var(--dsw-alias-state-error-primary)}
+.uh-fail{display:flex;align-items:center;gap:8px;min-width:0}
+.uh-fail-text{flex:1;min-width:0;color:var(--dsw-alias-state-error-primary);font-size:10px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.uh-retry{flex:none;height:20px;padding:0 8px;border:.5px solid var(--dsw-alias-border-l1);border-radius:999px;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:9.5px;cursor:pointer}
+.uh-retry:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}
+.uh-loading{display:flex;align-items:center;gap:6px;color:var(--dsw-alias-label-tertiary);font-size:10.5px}
+.uh-spin{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--dsw-alias-bg-layer-3);border-top-color:var(--dsw-alias-brand-primary);animation:uh-spin .8s linear infinite}
+.uh-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-top:.5px solid var(--dsw-alias-border-l1);color:var(--dsw-alias-label-tertiary);font-size:9.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.uh-pill{display:flex;align-items:center;gap:7px;height:32px;box-sizing:border-box;padding:0 11px;border-radius:999px;border:.5px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 90%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35);box-shadow:0 10px 26px -14px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.1);cursor:grab;touch-action:none;white-space:nowrap}
+.uh-pill:hover{border-color:var(--dsw-alias-border-l3)}
+.uh-pill:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:2px}
+.uh-pill-k{color:var(--dsw-alias-label-tertiary);font-size:9px;letter-spacing:.05em;text-transform:uppercase}
+.uh-pill-v{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.uh-pill-sep{width:.5px;height:11px;background:var(--dsw-alias-border-l2);flex:none}
+.uh-pill-chev{color:var(--dsw-alias-label-tertiary);display:inline-flex;margin-left:1px}
+@keyframes uh-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.uh-fill,.uh-stack span{transition:none}.uh-spin,.uh-icon[data-busy=true] svg{animation-duration:2s}}
+`
+
+    /**
+     * Replace `{name}` placeholders without a locale service.
+     * @param template - source template.
+     * @param values - replacement values.
+     * @returns the filled string.
+     */
+    function fill(template, values) {
+      let text = String(template)
+      for (const [name, value] of Object.entries(values ?? {})) {
+        text = text.split(`{${name}}`).join(String(value))
+      }
+      return text
+    }
+
+    /**
+     * Normalize a slot-supplied translator.
+     * @param translate - locale-bound `t`, when present.
+     * @returns a callable translator.
+     */
+    function translatorOf(translate) {
+      if (typeof translate === 'function') return translate
+      return (key, values) => (values === undefined ? key : fill(key, values))
+    }
+
+    /** BCP-47 tag used for `Intl` output. */
+    function localeTag() {
+      if (typeof document !== 'undefined' && typeof document.documentElement.lang === 'string' && document.documentElement.lang !== '') {
+        return document.documentElement.lang
+      }
+      if (typeof navigator !== 'undefined' && typeof navigator.language === 'string') return navigator.language
+      return 'zh-CN'
+    }
+
+    /**
+     * Absolute same-origin path for one usage route.
+     * @param relative - route below the page base, without a leading slash.
+     * @returns an absolute pathname.
+     */
+    function apiPath(relative) {
+      if (typeof document === 'undefined') return `/${relative}`
+      return new URL(relative, document.baseURI).pathname
+    }
+
+    /** `HH:MM` clock time. */
+    function clockOf(timestamp) {
+      return new Intl.DateTimeFormat(localeTag(), { hour: '2-digit', minute: '2-digit' }).format(timestamp)
+    }
+
+    /** `HH:MM:SS` clock time. */
+    function clockSecondsOf(timestamp) {
+      return new Intl.DateTimeFormat(localeTag(), {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      }).format(timestamp)
+    }
+
+    /** `M/D HH:MM` for a reset outside today. */
+    function dateClockOf(timestamp) {
+      return new Intl.DateTimeFormat(localeTag(), {
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }).format(timestamp)
+    }
+
+    /** Clock label for one reset instant, adding the date when it is not today. */
+    function resetClockOf(timestamp) {
+      return new Date(timestamp).toDateString() === new Date().toDateString()
+        ? clockOf(timestamp)
+        : dateClockOf(timestamp)
+    }
+
+    /** Human duration built from translated parts. */
+    function durationText(milliseconds, t) {
+      if (!(milliseconds > 0)) return t('time.soon')
+      const minutes = Math.floor(milliseconds / 60000)
+      if (minutes < 1) return t('time.lessThanMinute')
+      const days = Math.floor(minutes / 1440)
+      const hours = Math.floor((minutes % 1440) / 60)
+      const rest = minutes % 60
+      if (days > 0) return t('time.daysHours', { days, hours })
+      if (hours > 0) return t('time.hoursMinutes', { hours, minutes: rest })
+      return t('time.minutes', { n: rest })
+    }
+
+    /** Severity bucket of one used percentage. */
+    function severityOf(used) {
+      if (!Number.isFinite(used)) return 'idle'
+      if (used >= 100) return 'error'
+      if (used >= 80) return 'warn'
+      return 'ok'
+    }
+
+    /** Short percentage label; keeps a nonzero sub-one percent visible. */
+    function percentOf(used) {
+      if (!Number.isFinite(used)) return '—'
+      const rounded = Math.round(used)
+      if (used > 0 && rounded === 0) return '<1'
+      return String(Math.min(999, Math.max(0, rounded)))
+    }
+
+    /** Compact token count for the card body. */
+    function compactOf(value) {
+      if (!Number.isFinite(value)) return '—'
+      return new Intl.NumberFormat(localeTag(), {
+        notation: 'compact',
+        maximumFractionDigits: 1,
+      }).format(value)
+    }
+
+    /** Exact grouped count for tooltips. */
+    function exactOf(value) {
+      if (!Number.isFinite(value)) return '—'
+      return new Intl.NumberFormat(localeTag()).format(value)
+    }
+
+    /** Currency symbol of a DeepSeek wallet. */
+    function currencySymbol(currency) {
+      if (currency === 'USD') return '$'
+      if (currency === 'CNY') return '¥'
+      return ''
+    }
+
+    /** Two-decimal money label. */
+    function moneyOf(value, currency) {
+      if (!Number.isFinite(value)) return '—'
+      const amount = new Intl.NumberFormat(localeTag(), {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 6,
+      }).format(value)
+      return `${currencySymbol(currency)}${amount}`
+    }
+
+    /**
+     * Fold the recharge and bonus wallet lists into totals per currency.
+     * @param account - DeepSeek account projection.
+     * @returns ordered `{ currency, recharge, bonus }` groups.
+     */
+    function groupWallets(account) {
+      const groups = new Map()
+      const add = (wallet, kind) => {
+        if (wallet === null || typeof wallet !== 'object') return
+        const currency = wallet.currency === 'USD' ? 'USD' : 'CNY'
+        const value = Number(wallet.balance)
+        if (!Number.isFinite(value)) return
+        let group = groups.get(currency)
+        if (group === undefined) {
+          group = { currency, recharge: 0, bonus: 0 }
+          groups.set(currency, group)
+        }
+        if (kind === 'bonus') group.bonus += value
+        else group.recharge += value
+      }
+      for (const wallet of account?.balance?.wallets ?? []) add(wallet, 'recharge')
+      for (const wallet of account?.balance?.bonusWallets ?? []) add(wallet, 'bonus')
+      const order = { CNY: 0, USD: 1 }
+      return [...groups.values()].sort((left, right) => (order[left.currency] ?? 9) - (order[right.currency] ?? 9))
+    }
+
+    /** Readable message from a rejected promise. */
+    function errorText(error) {
+      if (error instanceof Error) return error.message
+      return String(error)
+    }
+
+    /**
+     * Fetch one JSON route and reject on a non-2xx response.
+     * @param path - same-origin pathname plus query.
+     * @returns the parsed body.
+     */
+    async function fetchJson(path) {
+      const response = await fetch(path, {
+        cache: 'no-store',
+        credentials: 'same-origin',
+        headers: { accept: 'application/json' },
+      })
+      const body = await response.json().catch(() => null)
+      if (!response.ok) {
+        const message = body !== null && typeof body.error === 'string'
+          ? body.error
+          : `HTTP ${response.status}`
+        throw new Error(message)
+      }
+      return body
+    }
+
+    /**
+     * Read the Codex snapshot.
+     * @param force - bypass the host cache.
+     * @returns the normalized Codex snapshot.
+     */
+    async function readCodex(force) {
+      const query = force ? '?force=1' : ''
+      const body = await fetchJson(`${apiPath('api/dsh-codex-usage')}${query}`)
+      if (body === null || body.ok !== true || body.data === null || typeof body.data !== 'object') {
+        const message = body !== null && typeof body.error === 'string' ? body.error : 'Codex usage route returned no data'
+        throw new Error(message)
+      }
+      return body.data
+    }
+
+    /**
+     * Read the DeepSeek payload.
+     * @param force - bypass both host caches.
+     * @returns the account plus token projection.
+     */
+    async function readDeepseek(force) {
+      const params = new URLSearchParams({
+        locale: localeTag(),
+        tz: String(-new Date().getTimezoneOffset() * 60),
+        refresh: force ? '1' : '0',
+      })
+      const body = await fetchJson(`${apiPath('api/dsh-deepseek-usage')}?${params.toString()}`)
+      if (body === null || typeof body !== 'object') throw new Error('DeepSeek usage route returned no data')
+      if (typeof body.error === 'string') throw new Error(body.error)
+      return body
+    }
+
+    /** Smallest top coordinate that clears the window chrome. */
+    function topClearance() {
+      if (typeof document === 'undefined') return 8
+      if (document.documentElement.dataset.platform !== 'darwin') return 8
+      const raw = window.getComputedStyle(document.documentElement).getPropertyValue('--dsh-frame-top-clearance')
+      const value = Number.parseFloat(raw)
+      return Number.isFinite(value) && value > 0 ? value + 8 : 8
+    }
+
+    /** Clamp one number into an inclusive range. */
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), Math.max(min, max))
+    }
+
+    /** Default floating-surface state before a stored position is available. */
+    function defaultUiState() {
+      return {
+        x: null,
+        y: null,
+        capsuleX: null,
+        capsuleY: null,
+        collapsed: false,
+        enabled: true,
+      }
+    }
+
+    /** Restore the one remembered capsule position, including legacy x/y. */
+    function readUiState() {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY)
+        if (raw === null) return defaultUiState()
+        const parsed = JSON.parse(raw)
+        if (parsed === null || typeof parsed !== 'object') return defaultUiState()
+        const capsuleX = Number.isFinite(parsed.capsuleX)
+          ? parsed.capsuleX
+          : Number.isFinite(parsed.collapsedX)
+            ? parsed.collapsedX
+            : Number.isFinite(parsed.x) ? parsed.x : null
+        const capsuleY = Number.isFinite(parsed.capsuleY)
+          ? parsed.capsuleY
+          : Number.isFinite(parsed.collapsedY)
+            ? parsed.collapsedY
+            : Number.isFinite(parsed.y) ? parsed.y : null
+        const collapsed = parsed.collapsed === true
+        return {
+          x: capsuleX,
+          y: capsuleY,
+          capsuleX,
+          capsuleY,
+          collapsed,
+          enabled: parsed.enabled !== false,
+        }
+      } catch {
+        return defaultUiState()
+      }
+    }
+
+    /** Save the capsule coordinates only while the capsule itself is moved. */
+    function withUiPosition(state, x, y) {
+      return state.collapsed
+        ? { ...state, x, y, capsuleX: x, capsuleY: y }
+        : { ...state, x, y }
+    }
+
+    /** Persist the capsule anchor and visibility state, never expanded coordinates. */
+    function writeUiState(state) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          capsuleX: state.capsuleX,
+          capsuleY: state.capsuleY,
+          collapsed: state.collapsed,
+          enabled: state.enabled,
+        }))
+      } catch {
+        // Private mode and quota errors only cost persistence.
+      }
+    }
+
+    /** Refresh glyph. */
+    function RefreshIcon() {
+      return h('svg', { width: 15, height: 15, viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+        h('path', {
+          d: 'M13.4 8a5.4 5.4 0 1 1-1.62-3.85',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+        }),
+        h('path', {
+          d: 'M13.4 2.6v3.2h-3.2',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        }))
+    }
+
+    /** Collapse glyph. */
+    function CollapseIcon() {
+      return h('svg', { width: 15, height: 15, viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+        h('path', {
+          d: 'M4 6.25 8 10.25l4-4',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        }))
+    }
+
+    /** Expand glyph. */
+    function ExpandIcon() {
+      return h('svg', { width: 13, height: 13, viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+        h('path', {
+          d: 'M4 9.75 8 5.75l4 4',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        }))
+    }
+
+    /** One section badge. */
+    function Badge(props) {
+      const tone = props.tone === 'warn' || props.tone === 'error' ? ` uh-badge-${props.tone}` : ''
+      return h('span', {
+        className: `uh-badge${tone}`,
+        title: typeof props.title === 'string' ? props.title : undefined,
+      }, props.children)
+    }
+
+    /** One horizontal meter. */
+    function Meter(props) {
+      const used = Number.isFinite(props.value) ? props.value : 0
+      const width = clamp(used, 0, 100)
+      return h('div', {
+        className: `uh-meter${props.thin === true ? ' uh-meter-thin' : ''}`,
+        role: 'progressbar',
+        'aria-valuemin': 0,
+        'aria-valuemax': 100,
+        'aria-valuenow': Math.round(width),
+        'aria-label': typeof props.label === 'string' ? props.label : undefined,
+      }, h('span', {
+        className: 'uh-fill',
+        'data-tone': props.tone ?? 'ok',
+        style: { width: `${width}%` },
+      }))
+    }
+
+    /** Loading placeholder used on first paint. */
+    function LoadingLine(props) {
+      return h('div', { className: 'uh-loading' },
+        h('span', { className: 'uh-spin', 'aria-hidden': true }),
+        h('span', null, props.t('state.loading')))
+    }
+
+    /** One retryable failure line. */
+    function FailureLine(props) {
+      return h('div', { className: 'uh-fail' },
+        h('span', { className: 'uh-fail-text', title: props.message }, props.message),
+        h('button', {
+          type: 'button',
+          className: 'uh-retry',
+          onPointerDown: (event) => event.stopPropagation(),
+          onClick: props.onRetry,
+        }, props.t('state.retry')))
+    }
+
+    /** One Codex rate-limit window. */
+    function WindowRow(props) {
+      const usage = props.window
+      const t = props.t
+      const used = usage !== null && usage !== undefined && Number.isFinite(usage.usedPercent)
+        ? usage.usedPercent
+        : null
+      const tone = severityOf(used)
+      const resetAt = usage !== null && usage !== undefined && Number.isFinite(usage.resetAtMs)
+        ? usage.resetAtMs
+        : null
+      return h('div', { className: 'uh-metric' },
+        h('div', { className: 'uh-metric-top' },
+          h('span', { className: 'uh-metric-label' }, props.label),
+          h('span', { className: 'uh-metric-value' },
+            used === null ? '—' : [percentOf(used), h('span', { key: 'u', className: 'uh-unit' }, '%')])),
+        h(Meter, { value: used ?? 0, tone, label: props.label }),
+        h('div', { className: 'uh-sub' },
+          h('span', null, resetAt === null
+            ? t('codex.noReset')
+            : t('codex.resetAt', { time: resetClockOf(resetAt) })),
+          resetAt === null
+            ? null
+            : h('span', null, t('codex.resetIn', { left: durationText(resetAt - props.now, t) }))))
+    }
+
+    /** Codex limits section. */
+    function CodexSection(props) {
+      const { data, error, now, t, onRetry } = props
+      const plan = data !== null && typeof data?.account?.planType === 'string' ? data.account.planType : null
+      const source = data !== null ? data.source : null
+      const head = h('div', { className: 'uh-sec-head' },
+        h('span', { className: 'uh-sec-name' }, 'Codex'),
+        plan === null || plan === ''
+          ? null
+          : h(Badge, null, t('codex.plan', { plan: plan.charAt(0).toUpperCase() + plan.slice(1) })),
+        data?.rateLimitReached === true ? h(Badge, { tone: 'error' }, t('codex.limit')) : null,
+        h('span', { className: 'uh-spacer' }),
+        data?.stale === true ? h(Badge, { tone: 'warn' }, t('codex.stale')) : null,
+        source === null
+          ? null
+          : h(Badge, { tone: source === 'live' ? undefined : 'warn' }, source === 'live' ? t('codex.source.live') : t('codex.source.session')))
+
+      if (data === null) {
+        return h('section', { className: 'uh-sec' }, head,
+          error === null ? h(LoadingLine, { t }) : h(FailureLine, { message: error, t, onRetry }))
+      }
+
+      const windows = data.windows ?? {}
+      const notice = error === null
+        ? null
+        : h('p', {
+          className: `uh-note${source === 'live' ? ' uh-note-error' : ''}`,
+          title: error,
+        }, source === 'live' ? t('codex.staleNote', { message: error }) : t('codex.fallback', { message: error }))
+
+      return h('section', { className: 'uh-sec' },
+        head,
+        h(WindowRow, { label: t('codex.primary'), window: windows.primary ?? null, now, t }),
+        h(WindowRow, { label: t('codex.secondary'), window: windows.secondary ?? null, now, t }),
+        notice)
+    }
+
+    /** DeepSeek balance and token section. */
+    function DeepseekSection(props) {
+      const { data, error, t, onRetry } = props
+      const head = h('div', { className: 'uh-sec-head' },
+        h('span', { className: 'uh-sec-name' }, 'DeepSeek'),
+        h('span', { className: 'uh-spacer' }),
+        data !== null && data.account?.status === 'credential-stored'
+          ? h(Badge, null, t('ds.signedIn'))
+          : null)
+
+      if (data === null) {
+        return h('section', { className: 'uh-sec' }, head,
+          error === null ? h(LoadingLine, { t }) : h(FailureLine, { message: error, t, onRetry }))
       }
 
       const account = data.account ?? null
