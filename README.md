@@ -85,16 +85,9 @@ AAAAA-Usage-Plugin/
 
 如果这个项目对你有帮助，欢迎扫码赞助，支持项目维护。感谢每一份支持！
 
-<table>
-  <tr>
-    <th align="center">微信支付</th>
-    <th align="center">支付宝</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/wechat-pay.jpg" alt="微信收款码" width="320"></td>
-    <td align="center"><img src="assets/alipay-pay.jpg" alt="支付宝收款码" width="320"></td>
-  </tr>
-</table>
+| 微信支付 | 支付宝 |
+| --- | --- |
+| ![微信收款码](./assets/wechat-pay.jpg) | ![支付宝收款码](./assets/alipay-pay.jpg) |
 
 ## 许可证
 
