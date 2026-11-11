@@ -15,7 +15,7 @@
 先在终端克隆项目：
 
 ```bash
-git clone https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin.git
+git clone https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin.git
 ```
 
 在 DSH 的插件管理控制台中，使用克隆后的项目目录安装插件：
@@ -73,10 +73,28 @@ AAAAA-Usage-Plugin/
 ├── client.js         # 用量页、侧边栏入口与 HUD
 ├── cordis.patch.yml  # DSH 插件注入配置
 ├── icon.svg
+├── assets/
+│   ├── wechat-pay.jpg
+│   └── alipay-pay.jpg
 ├── package.json
 ├── LICENSE
 └── README.md
 ```
+
+## 赞助
+
+如果这个项目对你有帮助，欢迎扫码赞助，支持项目维护。感谢每一份支持！
+
+<table>
+  <tr>
+    <th align="center">微信支付</th>
+    <th align="center">支付宝</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/wechat-pay.jpg" alt="微信收款码" width="320"></td>
+    <td align="center"><img src="assets/alipay-pay.jpg" alt="支付宝收款码" width="320"></td>
+  </tr>
+</table>
 
 ## 许可证
 

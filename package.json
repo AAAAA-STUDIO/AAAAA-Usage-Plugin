@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin.git"
+    "url": "https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin.git"
   },
-  "homepage": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin#readme",
+  "homepage": "https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin#readme",
   "bugs": {
-    "url": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin/issues"
+    "url": "https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin/issues"
   },
   "icon": "icon.svg",
   "exports": {
@@ -27,6 +27,7 @@
     "cordis.patch.yml",
     "icon.svg",
     "README.md",
+    "assets/",
     "LICENSE"
   ],
   "dsh": {
