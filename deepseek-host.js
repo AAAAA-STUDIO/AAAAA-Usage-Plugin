@@ -15,15 +15,18 @@
  *   an estimated CNY cost from DeepSeek's published prices; the legacy
  *   `scope=cumulative` response remains a local estimate for compatibility.
  *
- * The route is registered on the Host Connection exact-Fetch registry, so the
- * page's signed browser cookie authenticates it. Results are cached briefly to
- * keep an open panel from re-reading logs on every render.
+ * Routes are registered on the Host Connection exact-Fetch registry, so the
+ * page's signed browser cookie authenticates them. Results are cached briefly
+ * to keep an open panel from re-reading logs on every render.
  *
  * @module
  */
 
 /** Absolute registration path; the browser addresses its relative form. */
 const ROUTE_PATH = '/api/dsh-deepseek-usage'
+
+/** Separate exact-Fetch route for official spend; query parameters are not preserved. */
+const OFFICIAL_SPEND_ROUTE_PATH = '/api/dsh-deepseek-official-spend'
 
 /** Newest Sessions whose full logs are folded on one refresh. */
 const MAX_SESSIONS = 12
@@ -108,15 +111,22 @@ export function apply(ctx) {
     requestBody: 'buffered',
     fetch: (request) => respond(ctx, request),
   }), 'deepseek-usage: exact usage route')
+  ctx.effect(() => ctx.connection.fetch.register({
+    path: OFFICIAL_SPEND_ROUTE_PATH,
+    methods: ['GET', 'HEAD'],
+    requestBody: 'buffered',
+    fetch: (request) => respond(ctx, request, 'official'),
+  }), 'deepseek-usage: official spend route')
 }
 
 /**
  * Answer one usage request.
  * @param ctx - Host context.
  * @param request - authenticated exact-Fetch request.
+ * @param route - optional route scope fixed by the registered path.
  * @returns a JSON response with account and token data.
  */
-async function respond(ctx, request) {
+async function respond(ctx, request, route = null) {
   const headers = {
     'cache-control': 'no-store',
     'content-type': 'application/json; charset=utf-8',
@@ -127,13 +137,16 @@ async function respond(ctx, request) {
   const url = new URL(request.url)
   const client = {
     version: CLIENT_VERSION,
-    locale: normalizeLocale(url.searchParams.get('locale')),
-    timezoneOffsetSeconds: normalizeTimezone(url.searchParams.get('tz')),
+    locale: normalizeLocale(request.headers.get('x-dsh-usage-locale')
+      ?? url.searchParams.get('locale')),
+    timezoneOffsetSeconds: normalizeTimezone(request.headers.get('x-dsh-usage-timezone-offset')
+      ?? url.searchParams.get('tz')),
   }
-  const force = url.searchParams.get('refresh') === '1'
+  const force = request.headers.get('x-dsh-usage-refresh') === '1'
+    || url.searchParams.get('refresh') === '1'
 
   try {
-    if (url.searchParams.get('scope') === 'official') {
+    if (route === 'official' || url.searchParams.get('scope') === 'official') {
       const officialSpend = await readOfficialSpend(ctx, client, force, Date.now())
       return new Response(JSON.stringify({
         version: 1,
