@@ -1,6 +1,6 @@
-# AAAAA 用量
+# 用量监控 DSH 插件
 
-提供 DeepSeek Harness Desktop（DSH）插件与独立 macOS 桌面应用，用于查看 Codex 和 DeepSeek 用量，并显示可拖动的 HUD。
+提供 DeepSeek Harness Desktop（DSH）插件，用于查看 Codex 和 DeepSeek 用量，并在 DSH 内显示可拖动的 HUD。
 
 | 功能 | 数据来源 |
 | --- | --- |
@@ -24,23 +24,11 @@ git clone https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin.git
 plugin_manager install_bundle /path/to/AAAAA-Usage-Plugin
 ```
 
-将 `/path/to/AAAAA-Usage-Plugin` 替换成实际目录。安装或更新后刷新 DSH 页面，必要时重启 DSH。插件会添加「AAAAA 用量」侧边栏入口；页面标题栏可以开启或关闭 HUD。
+将 `/path/to/AAAAA-Usage-Plugin` 替换成实际目录。安装或更新后刷新 DSH 页面，必要时重启 DSH。插件会添加「用量监控」侧边栏入口；页面标题栏可以开启或关闭 HUD。
 
 ## 独立 macOS 桌面应用
 
-不运行 DSH 也可以单独打开完整用量页，并在其他应用上方显示全局置顶 HUD。应用提供 Codex 5 小时/每周用量、DeepSeek 官方账户余额和官方累计消费金额，以及本机 Token 统计。
-
-构建和启动：
-
-```bash
-cd desktop-macos
-./build-app.sh
-open "build/AAAAA Usage.app"
-```
-
-该脚本生成当前 Mac 架构的未签名应用。公开分发前需要开发者证书签名并完成 Apple 公证。详细构建和数据说明见 [desktop-macos/README.md](desktop-macos/README.md)。
-
-DeepSeek 登录使用官方浏览器 PKCE 授权，令牌保存在 macOS 钥匙串。官方余额和累计消费金额来自平台账户摘要；若官方接口不可用，界面会明确显示不可用，不使用本地估算替代。本机 Token 统计读取已有的 DSH 会话投影，不需要 DSH 进程运行；本机没有会话投影时显示暂无记录。
+桌面版已单独维护在公开仓库 [AAAAA-Usage-Plugin-app-macOS](https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin-app-macOS)。本仓库只保留 DSH 插件。
 
 ## 用量数据说明
 
@@ -88,7 +76,6 @@ AAAAA-Usage-Plugin/
 ├── deepseek-host.js  # DeepSeek 账户、官方金额与 Token 数据
 ├── client.js         # 用量页、侧边栏入口与 HUD
 ├── cordis.patch.yml  # DSH 插件注入配置
-├── desktop-macos/    # 独立 macOS 桌面应用
 ├── icon.svg
 ├── assets/
 │   ├── wechat-pay.jpg
