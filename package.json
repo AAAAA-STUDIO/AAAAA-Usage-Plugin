@@ -1,0 +1,46 @@
+{
+  "name": "AAAAA-Usage-Plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Codex and DeepSeek usage center with a floating HUD for DeepSeek Harness Desktop",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin.git"
+  },
+  "homepage": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin#readme",
+  "bugs": {
+    "url": "https://github.com/lc527914580-sketch/AAAAA-Usage-Plugin/issues"
+  },
+  "icon": "icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "codex-host.js",
+    "deepseek-host.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  }
+}
