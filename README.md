@@ -4,7 +4,7 @@
 
 | 功能 | 数据来源 |
 | --- | --- |
-| Codex 5 小时与每周用量窗口 | ChatGPT 用量接口；接口不可用时可回退读取本机 Codex 会话记录 |
+| Codex 5 小时与每周窗口剩余用量 | ChatGPT 用量接口；接口不可用时可回退读取本机 Codex 会话记录 |
 | DeepSeek 账户余额与赠送余额 | 当前 DSH 登录的 DeepSeek 开放平台账户 |
 | DeepSeek Token 统计 | 本机 DSH 会话记录 |
 | DeepSeek 累计消费金额 | DeepSeek 开放平台账户摘要中的官方累计金额 |

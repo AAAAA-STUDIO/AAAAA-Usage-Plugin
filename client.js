@@ -16,7 +16,7 @@ window.__ModuleLoader__.load({
 
     const zh = {
       'panel.title': 'Codex 用量',
-      'panel.subtitle': '5 小时与每周额度、重置时间与重置券',
+      'panel.subtitle': '5 小时与每周剩余额度、重置时间与重置券',
       'action.refresh': '刷新',
       'action.refreshing': '刷新中',
       'meta.updated': '更新于 {time}',
@@ -25,12 +25,10 @@ window.__ModuleLoader__.load({
       'meta.source.live': '实时接口',
       'meta.source.session': '本地会话',
       'meta.stale': '可能已过期',
-      'window.primary': '5 小时窗口',
-      'window.secondary': '每周窗口',
+      'window.primary': '5 小时剩余',
+      'window.secondary': '每周剩余',
       'window.spanHours': '{n} 小时窗口',
       'window.spanDays': '{n} 天窗口',
-      'window.used': '已用',
-      'window.remaining': '剩余 {percent}%',
       'window.resetAt': '重置于 {time}',
       'window.resetIn': '还有 {left}',
       'window.noReset': '重置时间未知',
@@ -69,7 +67,7 @@ window.__ModuleLoader__.load({
 
     const en = {
       'panel.title': 'Codex usage',
-      'panel.subtitle': 'Five-hour and weekly limits, reset times, and reset credits',
+      'panel.subtitle': 'Remaining five-hour and weekly limits, reset times, and reset credits',
       'action.refresh': 'Refresh',
       'action.refreshing': 'Refreshing',
       'meta.updated': 'Updated {time}',
@@ -78,12 +76,10 @@ window.__ModuleLoader__.load({
       'meta.source.live': 'Live API',
       'meta.source.session': 'Local session',
       'meta.stale': 'May be stale',
-      'window.primary': 'Five-hour window',
-      'window.secondary': 'Weekly window',
+      'window.primary': '5-hour limit left',
+      'window.secondary': 'Weekly limit left',
       'window.spanHours': '{n}-hour window',
       'window.spanDays': '{n}-day window',
-      'window.used': 'used',
-      'window.remaining': '{percent}% left',
       'window.resetAt': 'Resets {time}',
       'window.resetIn': '{left} to go',
       'window.noReset': 'Reset time unknown',
@@ -155,7 +151,6 @@ window.__ModuleLoader__.load({
 .cu-figure{display:flex;align-items:baseline;gap:8px;margin:2px 0 0}
 .cu-percent{font-size:40px;line-height:46px;font-weight:500;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .cu-percent-unit{font-size:14px;color:var(--dsw-alias-label-secondary)}
-.cu-figure-meta{margin-left:auto;color:var(--dsw-alias-label-secondary);font-size:12px;font-variant-numeric:tabular-nums}
 .cu-meter{position:relative;height:8px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);overflow:hidden;margin:12px 0 12px}
 .cu-meter-fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--dsw-alias-brand-primary);transition:width .45s ease}
 .cu-meter-fill-warn{background:var(--dsw-alias-state-warn-primary)}
@@ -245,16 +240,16 @@ window.__ModuleLoader__.load({
     /** One rate-limit window card. */
     function WindowCard(props) {
       const { title, window: usage, t, now } = props
-      const used = usage === null || usage === undefined ? null : usage.usedPercent
+      const rawUsed = usage === null || usage === undefined ? null : usage.usedPercent
+      const used = Number.isFinite(rawUsed) ? Math.max(0, Math.min(100, rawUsed)) : null
       if (used === null) {
         return h('section', { className: 'cu-card' },
           h('div', { className: 'cu-card-head' }, h('h2', { className: 'cu-card-title' }, title)),
           h('div', { className: 'cu-empty' }, h('p', null, t('window.missing'))))
       }
       const severity = severityOf(used)
-      const width = Math.max(0, Math.min(100, used))
       const remaining = Math.max(0, 100 - used)
-      const percent = Math.round(used)
+      const remainingPercent = Math.round(remaining)
       const resetIn = usage.resetAtMs === null ? null : usage.resetAtMs - now
       const resetLabel = usage.resetAtMs === null
         ? t('window.noReset')
@@ -275,17 +270,16 @@ window.__ModuleLoader__.load({
             h('span', { className: `cu-dot${severity === 'ok' ? '' : severity === 'warn' ? ' cu-dot-warn' : ' cu-dot-error'}` }),
             t(`window.status.${severity}`))),
         h('div', { className: 'cu-figure' },
-          h('span', { className: 'cu-percent' }, percent),
-          h('span', { className: 'cu-percent-unit' }, '%'),
-          h('span', { className: 'cu-figure-meta' }, t('window.remaining', { percent: Math.round(remaining) }))),
+          h('span', { className: 'cu-percent' }, remainingPercent),
+          h('span', { className: 'cu-percent-unit' }, '%')),
         h('div', {
           className: 'cu-meter',
           role: 'progressbar',
           'aria-valuemin': 0,
           'aria-valuemax': 100,
-          'aria-valuenow': percent,
+          'aria-valuenow': remainingPercent,
           'aria-label': title,
-        }, h('div', { className: meterClass, style: { width: `${width}%` } })),
+        }, h('div', { className: meterClass, style: { width: `${remaining}%` } })),
         h('div', { className: 'cu-reset' },
           h('span', null, resetLabel),
           resetIn === null
@@ -1605,8 +1599,8 @@ window.__ModuleLoader__.load({
       'footer.updated': '更新于 {time}',
       'footer.never': '尚未更新',
       'footer.poll': '每 {seconds} 秒刷新',
-      'codex.primary': '5 小时',
-      'codex.secondary': '每周',
+      'codex.primary': '5 小时剩余',
+      'codex.secondary': '每周剩余',
       'codex.plan': '{plan}',
       'codex.source.live': '实时',
       'codex.source.session': '本地',
@@ -1639,7 +1633,7 @@ window.__ModuleLoader__.load({
       'ds.empty': '暂无会话记录',
       'ds.context': '当前会话上下文 {percent}%',
       'ds.contextLabel': '当前会话上下文',
-      'pill.codex': 'Codex',
+      'pill.codex': 'Codex 剩余',
       'pill.ds': 'DeepSeek',
     }
 
@@ -1655,8 +1649,8 @@ window.__ModuleLoader__.load({
       'footer.updated': 'Updated {time}',
       'footer.never': 'Not updated yet',
       'footer.poll': 'Every {seconds}s',
-      'codex.primary': '5 hours',
-      'codex.secondary': 'Weekly',
+      'codex.primary': '5-hour limit left',
+      'codex.secondary': 'Weekly limit left',
       'codex.plan': '{plan}',
       'codex.source.live': 'Live',
       'codex.source.session': 'Local',
@@ -1689,12 +1683,12 @@ window.__ModuleLoader__.load({
       'ds.empty': 'No sessions yet',
       'ds.context': 'Live context {percent}%',
       'ds.contextLabel': 'Live context',
-      'pill.codex': 'Codex',
+      'pill.codex': 'Codex left',
       'pill.ds': 'DeepSeek',
     }
 
     const CSS = `
-.uh-root{position:absolute;z-index:30;pointer-events:auto;color:var(--dsw-alias-label-primary);font-family:inherit;font-size:12px;line-height:1.45;-webkit-user-select:none;user-select:none}
+.uh-root{position:fixed;z-index:2147483647;pointer-events:auto;color:var(--dsw-alias-label-primary);font-family:inherit;font-size:12px;line-height:1.45;-webkit-user-select:none;user-select:none}
 .uh-root.uh-drag,.uh-root.uh-drag *{cursor:grabbing!important}
 .uh-card{box-sizing:border-box;width:304px;border-radius:18px;border:.5px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 90%,transparent);backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);box-shadow:0 18px 48px -20px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.12);overflow:hidden;transition:border-color .15s ease}
 .uh-card:hover{border-color:var(--dsw-alias-border-l3)}
@@ -2161,9 +2155,11 @@ window.__ModuleLoader__.load({
     function WindowRow(props) {
       const usage = props.window
       const t = props.t
-      const used = usage !== null && usage !== undefined && Number.isFinite(usage.usedPercent)
+      const rawUsed = usage !== null && usage !== undefined && Number.isFinite(usage.usedPercent)
         ? usage.usedPercent
         : null
+      const used = rawUsed === null ? null : Math.max(0, Math.min(100, rawUsed))
+      const remaining = used === null ? null : Math.max(0, 100 - used)
       const tone = severityOf(used)
       const resetAt = usage !== null && usage !== undefined && Number.isFinite(usage.resetAtMs)
         ? usage.resetAtMs
@@ -2172,8 +2168,8 @@ window.__ModuleLoader__.load({
         h('div', { className: 'uh-metric-top' },
           h('span', { className: 'uh-metric-label' }, props.label),
           h('span', { className: 'uh-metric-value' },
-            used === null ? '—' : [percentOf(used), h('span', { key: 'u', className: 'uh-unit' }, '%')])),
-        h(Meter, { value: used ?? 0, tone, label: props.label }),
+            remaining === null ? '—' : [percentOf(remaining), h('span', { key: 'u', className: 'uh-unit' }, '%')])),
+        h(Meter, { value: remaining ?? 0, tone, label: props.label }),
         h('div', { className: 'uh-sub' },
           h('span', null, resetAt === null
             ? t('codex.noReset')
@@ -2531,6 +2527,9 @@ window.__ModuleLoader__.load({
       const position = ui.x === null || ui.y === null ? { right: 16, bottom: 16 } : { left: ui.x, top: ui.y }
 
       const codexPrimary = codex?.windows?.primary?.usedPercent
+      const codexRemaining = Number.isFinite(codexPrimary)
+        ? Math.max(0, Math.min(100, 100 - codexPrimary))
+        : null
       const deepseekPrimacy = deepseek?.account?.status === 'credential-stored' ? groupWallets(deepseek.account)[0] : null
       const refresh = () => { void load(true) }
       const collapse = () => setUi((previous) => {
@@ -2557,7 +2556,7 @@ window.__ModuleLoader__.load({
       })
 
       if (ui.collapsed) {
-        const primaryText = Number.isFinite(codexPrimary) ? `${percentOf(codexPrimary)}%` : '—'
+        const primaryText = codexRemaining === null ? '—' : `${percentOf(codexRemaining)}%`
         const balanceText = deepseekPrimacy === null
           ? '—'
           : moneyOf(deepseekPrimacy.recharge + deepseekPrimacy.bonus, deepseekPrimacy.currency)
