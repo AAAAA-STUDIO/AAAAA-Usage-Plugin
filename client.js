@@ -887,6 +887,7 @@ window.__ModuleLoader__.load({
 .dsu-cost-value{display:flex;align-items:baseline;gap:8px;font-size:20px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums}
 .dsu-cost-card .dsu-cost-value{font-size:28px;line-height:1.3;flex-wrap:wrap;overflow-wrap:anywhere}
 .dsu-cost-card .dsu-cost-value.dsu-muted{font-size:13px;font-weight:400}
+.dsu-balance-groups{display:flex;flex-direction:column;gap:8px}
 .dsu-cost-count{font-size:11px;font-weight:500;color:var(--dsw-alias-label-secondary)}
 .dsu-error{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--dsw-alias-state-error-primary);border-radius:10px;padding:10px 12px;font-size:13px}
 .dsu-error-text{min-width:0;word-break:break-word}
@@ -1308,10 +1309,9 @@ window.__ModuleLoader__.load({
 
       function walletCard(group) {
         const total = group.recharge + group.bonus
-        return h('div', { className: 'dsu-wallet', key: group.currency },
-          h('div', { className: 'dsu-wallet-label' }, `${t('balance.total')} · ${group.currency}`),
-          h('div', { className: 'dsu-wallet-value', title: `${amount(String(total))} ${group.currency}` },
-            money(group.currency, total),
+        return h('div', { className: 'dsu-balance-group', key: group.currency },
+          h('div', { className: 'dsu-cost-value' },
+            h('span', null, money(group.currency, total)),
             h('span', { className: 'dsu-wallet-currency' }, group.currency),
           ),
           h('div', { className: 'dsu-wallet-split' },
@@ -1322,13 +1322,25 @@ window.__ModuleLoader__.load({
       }
 
       function emptyWalletCard() {
-        return h('div', { className: 'dsu-wallet' },
-          h('div', { className: 'dsu-wallet-label' }, t('balance.total')),
-          h('div', { className: 'dsu-wallet-value' }, '—'),
+        return h('div', { className: 'dsu-balance-group' },
+          h('div', { className: 'dsu-cost-value' }, '—'),
           h('div', { className: 'dsu-wallet-split' },
             h('span', null, `${t('balance.recharge')} —`),
             h('span', null, `${t('balance.bonus')} —`),
           ),
+        )
+      }
+
+      function balanceSection(groups, message) {
+        const body = message !== null
+          ? h('div', { className: 'dsu-cost-value dsu-muted' }, message)
+          : h('div', { className: 'dsu-balance-groups' },
+            groups.length > 0 ? groups.map(walletCard) : [emptyWalletCard()],
+          )
+        return h('section', { className: 'dsu-card dsu-cost-card' },
+          h('div', { className: 'dsu-section-head' },
+            h('h2', { className: 'dsu-h2' }, t('balance.total'))),
+          body,
         )
       }
 
@@ -1338,41 +1350,36 @@ window.__ModuleLoader__.load({
           account !== null && typeof account === 'object' ? accountLinks(account.links) : null,
         )
 
+        let details = null
+        let balanceMessage = null
+        let groups = []
+
         if (account === null || account === undefined) {
-          return h('section', { className: 'dsu-card' }, head, h('p', { className: 'dsu-muted' }, t('state.loading')))
-        }
-        if (account.available === false) {
-          return h('section', { className: 'dsu-card' }, head,
-            h('p', { className: 'dsu-muted' }, t('account.unavailable')))
-        }
-        if (account.status === 'signed-out') {
-          return h('section', { className: 'dsu-card' }, head,
+          details = h('p', { className: 'dsu-muted' }, t('state.loading'))
+          balanceMessage = t('state.loading')
+        } else if (account.available === false) {
+          details = h('p', { className: 'dsu-muted' }, t('account.unavailable'))
+          balanceMessage = t('account.unavailable')
+        } else if (account.status === 'signed-out') {
+          details = h('div', null,
             h('div', { className: 'dsu-profile-name' }, t('account.signedOut')),
             h('p', { className: 'dsu-muted' }, t('account.signedOutHint')))
-        }
-        if (account.status === 'error') {
-          return h('section', { className: 'dsu-card' }, head,
-            h('p', { className: 'dsu-muted' }, `${t('account.unavailable')} ${account.error || ''}`))
-        }
+          balanceMessage = t('account.signedOut')
+        } else if (account.status === 'error') {
+          details = h('p', { className: 'dsu-muted' }, `${t('account.unavailable')} ${account.error || ''}`)
+          balanceMessage = account.error || t('account.unavailable')
+        } else {
+          const profile = account.profile !== null && typeof account.profile === 'object' ? account.profile : null
+          const name = profile !== null && typeof profile.name === 'string' && profile.name !== ''
+            ? profile.name
+            : t('account.unnamed')
+          const contact = profile !== null && typeof profile.contact === 'string' && profile.contact !== ''
+            ? profile.contact
+            : null
+          const avatarUrl = profile !== null && typeof profile.avatarUrl === 'string' ? profile.avatarUrl : null
+          const initial = name.trim().slice(0, 1).toUpperCase()
 
-        const profile = account.profile !== null && typeof account.profile === 'object' ? account.profile : null
-        const name = profile !== null && typeof profile.name === 'string' && profile.name !== ''
-          ? profile.name
-          : t('account.unnamed')
-        const contact = profile !== null && typeof profile.contact === 'string' && profile.contact !== ''
-          ? profile.contact
-          : null
-        const avatarUrl = profile !== null && typeof profile.avatarUrl === 'string' ? profile.avatarUrl : null
-        const initial = name.trim().slice(0, 1).toUpperCase()
-
-        const balance = account.balance !== null && typeof account.balance === 'object' ? account.balance : null
-        const wallets = balance !== null && Array.isArray(balance.wallets) ? balance.wallets : []
-        const bonusWallets = balance !== null && Array.isArray(balance.bonusWallets) ? balance.bonusWallets : []
-        const groups = groupedWallets(wallets, bonusWallets)
-
-        return h('section', { className: 'dsu-card' },
-          head,
-          h('div', { className: 'dsu-profile' },
+          details = h('div', { className: 'dsu-profile' },
             avatarUrl !== null
               ? h('img', { className: 'dsu-avatar', src: avatarUrl, alt: '', referrerPolicy: 'no-referrer' })
               : h('div', { className: 'dsu-avatar', 'aria-hidden': true }, initial),
@@ -1380,11 +1387,22 @@ window.__ModuleLoader__.load({
               h('div', { className: 'dsu-profile-name' }, name),
               contact !== null ? h('div', { className: 'dsu-profile-contact' }, contact) : null,
             ),
+          )
+
+          const balance = account.balance !== null && typeof account.balance === 'object' ? account.balance : null
+          const wallets = balance !== null && Array.isArray(balance.wallets) ? balance.wallets : []
+          const bonusWallets = balance !== null && Array.isArray(balance.bonusWallets) ? balance.bonusWallets : []
+          groups = groupedWallets(wallets, bonusWallets)
+          if (account.balanceFailed === true) balanceMessage = t('balance.failed')
+        }
+
+        return h('section', { className: 'dsu-card' },
+          head,
+          details,
+          h('div', { className: 'dsu-summary-grid' },
+            balanceSection(groups, balanceMessage),
+            costSection(),
           ),
-          account.balanceFailed === true
-            ? h('p', { className: 'dsu-muted' }, t('balance.failed'))
-            : h('div', { className: 'dsu-wallets' },
-              groups.length > 0 ? groups.map(walletCard) : [emptyWalletCard()]),
         )
       }
 
@@ -1545,10 +1563,7 @@ window.__ModuleLoader__.load({
             ),
           ),
           state.error !== null ? errorBanner(state.error) : null,
-          h('div', { className: 'dsu-summary-grid' },
-            accountSection(),
-            costSection(),
-          ),
+          accountSection(),
           tokenSection(),
           h('div', { className: 'dsu-notes' },
             h('p', { className: 'dsu-note' }, t('tokens.note')),
