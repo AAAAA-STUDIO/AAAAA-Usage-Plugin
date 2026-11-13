@@ -98,9 +98,9 @@ AAAAA-Usage-Plugin/
 - 🙋 交流使用过程中遇到的问题
 - 📢 获取项目更新及相关动态
 
-**QQ 频道：
+QQ 频道：
 <img width="214" height="322" alt="IMG_4523" src="https://github.com/user-attachments/assets/60bb697e-c5c3-4d9c-9f6a-77b13a9472bb" />
-**
+
 
 ### 📝 反馈说明
 
